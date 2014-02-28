@@ -1,0 +1,13 @@
+#
+# RFCOMM configuration file.
+#
+# Find the gps radio by running : hcitool scan
+#
+
+rfcomm0 {
+	bind yes;
+	device 00:19:01:36:59:DD;
+	channel	1;
+	comment "GPS Radio";
+}
+

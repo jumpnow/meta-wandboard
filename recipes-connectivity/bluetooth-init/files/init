@@ -1,0 +1,36 @@
+#! /bin/sh
+
+set -e
+
+test -x /usr/sbin/bluetoothd || exit 0
+test -x /usr/bin/rfcomm || exit 0
+
+[ -r /etc/default/bluetooth ] && . /etc/default/bluetooth
+
+case "$BLUETOOTH_ENABLE" in
+	[Nn]*)
+		exit 0
+		;;
+esac
+
+case "$1" in
+    start)
+        echo "Starting bluetoothd daemon"
+        /usr/sbin/bluetoothd
+
+        echo "Binding rfcomm : rfcomm bind all"
+        /usr/bin/rfcomm bind all
+	;;
+
+    stop)
+        /usr/bin/rfcomm release all
+	killall bluetoothd
+        ;;
+
+    *)
+        echo "Usage: /etc/init.d/bluetooth {start|stop}"
+        exit 1
+esac
+
+exit 0
+

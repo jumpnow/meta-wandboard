@@ -1,0 +1,52 @@
+# Local configuration for meta-duovero images
+# Yocto Project 1.5.1 Poky distribution 10.0.1, [dora] branch
+# This is a sysvinit system
+
+ACCEPT_FSL_EULA = "1"
+
+LICENSE_FLAGS_WHITELIST = "commercial"
+
+IMAGE_FSTYPES_forcevariable = "tar.xz"
+
+# Important to override DISTRO_FEATURES or by default x11 and all its dependencies
+# will get built whether or not you use it in an image.
+DISTRO_FEATURES = "ext2 keyboard systemd usbhost wifi ${DISTRO_FEATURES_LIBC}"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio"
+
+PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
+
+# override the mix in the meta-gumstix/conf/machine configuration files
+MACHINE_FEATURES_forcevariable = "ext2 screen serial usbhost"
+
+BB_NUMBER_THREADS = "4"
+PARALLEL_MAKE = "-j 4"
+
+# duovero radio firmware works better with this version of udev
+PREFERRED_PROVIDER_udev = "systemd"
+
+# the default, but make sure we still have a sysvinit system
+VIRTUAL_RUNTIME_init_manager = "sysvinit"
+
+MACHINE = "wandboard-quad"
+
+# DL_DIR = "/oe-sources"
+
+# SSTATE_DIR = "/oe20/sstate-cache"
+
+# TMPDIR = "/oe20/tmp-poky-dora-build"
+
+DISTRO = "poky"
+
+PACKAGE_CLASSES = "package_ipk"
+
+# i686 or x86_64
+# SDKMACHINE = "x86_64"
+
+EXTRA_IMAGE_FEATURES = "debug-tweaks"
+
+USER_CLASSES = "image-mklibs image-prelink"
+
+PATCHRESOLVE = "noop"
+
+CONF_VERSION = "1"
+

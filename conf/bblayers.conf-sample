@@ -1,0 +1,21 @@
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+LCONF_VERSION = "6"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  ${HOME}/poky-dora/meta \
+  ${HOME}/poky-dora/meta-yocto \
+  ${HOME}/poky-dora/meta-openembedded/meta-oe \
+  ${HOME}/poky-dora/meta-openembedded/meta-networking \
+  ${HOME}/poky-dora/meta-fsl-arm \
+  ${HOME}/poky-dora/meta-fsl-arm-extra \
+  ${HOME}/wandboard/meta-wandboard \
+  "
+
+BBLAYERS_NON_REMOVABLE ?= " \
+  ${HOME}/poky-dora/meta \
+  ${HOME}/poky-dora/meta-yocto \
+  "

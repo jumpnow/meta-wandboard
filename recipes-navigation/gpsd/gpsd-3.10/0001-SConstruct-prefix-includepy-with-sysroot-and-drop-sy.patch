@@ -1,0 +1,33 @@
+diff --git a/SConstruct-orig b/SConstruct
+index 14e2f59..5486663 100644
+--- a/SConstruct-orig
++++ b/SConstruct
+@@ -1084,6 +1084,12 @@ else:
+         if vars[i] is None:
+             vars[i] = []
+     (cc, cxx, opt, basecflags, ccshared, ldshared, so_ext, includepy, ldflags) = vars
++
++    if env['sysroot']:
++        print "Prefixing includepy '%s' with sysroot prefix" % includepy
++        includepy = os.path.normpath("%s/%s/%s/%s" % (env['sysroot'], env['prefix'], env['includedir'], includepy))
++        print "'%s'" % includepy
++
+     # FIXME: build of python wrappers doesn't pickup flags set for coveraging, manually add them here
+     if env['coveraging']:
+         basecflags += ' -coverage'
+@@ -1350,12 +1356,15 @@ if not env['python']:
+     python_install = []
+ else:
+     python_lib_dir = sysconfig.get_python_lib(plat_specific=1)
++    python_lib_dir = python_lib_dir.replace(env['sysroot'], '')
+     python_module_dir = python_lib_dir + os.sep + 'gps'
+     python_extensions_install = python_env.Install( DESTDIR + python_module_dir,
+                                                     python_built_extensions)
+     if not env['debug'] and not env['profiling'] and env['strip']:
+         python_env.AddPostAction(python_extensions_install, '$STRIP $TARGET')
+ 
++    env.AddPostAction(python_extensions_install, '$CHRPATH -r "%s" "$TARGET"' % (python_lib_dir, ))
++
+     python_modules_install = python_env.Install( DESTDIR + python_module_dir,
+                                                 python_modules)
+ 
