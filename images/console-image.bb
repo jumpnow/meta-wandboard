@@ -44,6 +44,12 @@ DEV_SDK_INSTALL = " \
     pkgconfig \
  "
 
+DEV_EXTRAS = " \
+    avahi-daemon \
+    ntp \
+    ntp-tickadj \
+ "
+
 EXTRA_TOOLS_INSTALL = " \
     bzip2 \
     ethtool \
@@ -65,10 +71,21 @@ EXTRA_TOOLS_INSTALL = " \
 IMAGE_INSTALL += " \
     ${CORE_OS} \
     ${DEV_SDK_INSTALL} \
+    ${DEV_EXTRAS} \
     ${EXTRA_TOOLS_INSTALL} \
     ${KERNEL_EXTRA_INSTALL} \
     ${WIFI_SUPPORT} \
  "
+
+IMAGE_FILE_BLACKLIST += " \
+    /etc/init.d/hwclock.sh \
+ "
+
+remove_blacklist_files() {
+    for i in ${IMAGE_FILE_BLACKLIST}; do
+        rm -rf ${IMAGE_ROOTFS}$i
+    done
+}
 
 set_local_timezone() {
     ln -sf /usr/share/zoneinfo/EST5EDT ${IMAGE_ROOTFS}/etc/localtime
@@ -79,6 +96,7 @@ disable_bootlogd() {
 }
 
 ROOTFS_POSTPROCESS_COMMAND += " \
+    remove_blacklist_files ; \
     set_local_timezone ; \
     disable_bootlogd ; \
  "
