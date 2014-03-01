@@ -1,0 +1,22 @@
+diff --git avahi-0.6.31/avahi-daemon/avahi-daemon.conf-orig avahi-0.6.31/avahi-daemon/avahi-daemon.conf
+index c992842..9a1379f 100644
+--- avahi-0.6.31/avahi-daemon/avahi-daemon.conf-orig
++++ avahi-0.6.31/avahi-daemon/avahi-daemon.conf
+@@ -21,7 +21,7 @@
+ [server]
+ #host-name=foo
+ #domain-name=local
+-browse-domains=0pointer.de, zeroconf.org
++#browse-domains=jumpnow
+ use-ipv4=yes
+ use-ipv6=no
+ #allow-interfaces=eth0
+@@ -29,7 +29,7 @@ use-ipv6=no
+ #check-response-ttl=no
+ #use-iff-running=no
+ #enable-dbus=yes
+-#disallow-other-stacks=no
++disallow-other-stacks=yes
+ #allow-point-to-point=no
+ #cache-entries-max=4096
+ #clients-max=4096
