@@ -15,19 +15,19 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio"
 
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
-# override the mix in the meta-gumstix/conf/machine configuration files
-MACHINE_FEATURES_forcevariable = "ext2 screen serial usbhost"
-
 BB_NUMBER_THREADS = "4"
 PARALLEL_MAKE = "-j 4"
 
-# duovero radio firmware works better with this version of udev
+# Firmware loading is more reliable with this version of udev
 PREFERRED_PROVIDER_udev = "systemd"
 
 # the default, but make sure we still have a sysvinit system
 VIRTUAL_RUNTIME_init_manager = "sysvinit"
 
 MACHINE = "wandboard-quad"
+
+# wandboard has no hardware clock
+MACHINE_FEATURES_BACKFILL_CONSIDERED += "rtc"
 
 # DL_DIR = "/oe-sources"
 
