@@ -1,10 +1,6 @@
 #!/bin/bash
 #
-# (c) Copyright 2012 Scott Ellis <scott@pansenti.com>
-# Licensed under terms of GPLv2
-#
-# Based in large on the mksdcard.sh script from Steve Sakoman
-# http://www.sakoman.com/category/3-bootable-sd-microsd-card-creation-script.html
+# Create 2 partitions for a Wandboard O/S
 #
 
 if [ -n "$1" ]; then
@@ -53,14 +49,11 @@ echo -e "\nOkay, here we go ...\n"
 echo -e "=== Zeroing the MBR ===\n"
 dd if=/dev/zero of=$DRIVE bs=1024 count=1024
 
-# Standard 2 partitions
+# Create 2 partitions
 # Sectors are 512 bytes
-# 64 MB = 67108864 bytes = 131072 sectors
-# 2 GB = 2147483648 bytes = 4194304 sectors
-# MBR goes in first sector
-# Next 127 sectors are empty to align first partition on a 128 sector boundary
-# First partition starts at sector 128 and goes for 130944 sectors, FAT32
-# Second partition starts at sector 131072 and goes to end of card, Linux
+# 0-8191: 4MB Not formatted, u-boot
+# 8192-24575: 8MB, DOS partition, kernel
+# 24576-end: at least 2GB, Linux partition, rootfs
 
 echo -e "\n=== Creating 2 partitions ===\n"
 {
