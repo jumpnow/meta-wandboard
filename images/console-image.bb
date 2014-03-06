@@ -18,7 +18,9 @@ KERNEL_EXTRA_INSTALL = " \
  "
 
 WIFI_SUPPORT = " \
+    broadcom-nvram-config \
     iw \
+    linux-firmware-bcm4329 \
     wpa-supplicant \
  "
 
