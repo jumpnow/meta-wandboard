@@ -1,4 +1,4 @@
-# Local configuration for meta-duovero images
+# Local configuration for meta-wandboard images
 # Yocto Project 1.5.1 Poky distribution 10.0.1, [dora] branch
 # This is a sysvinit system
 
@@ -24,7 +24,20 @@ PREFERRED_PROVIDER_udev = "systemd"
 # the default, but make sure we still have a sysvinit system
 VIRTUAL_RUNTIME_init_manager = "sysvinit"
 
+# With the SPL bootloader, it's okay to use MACHINE=wandboard-quad
+# for wandboard-quad and wandboard-dual boards.
+# I'm waiting on a wandboard-solo to test.
 MACHINE = "wandboard-quad"
+
+# Using the bootloader provided in the wandboard-sdk-20131225
+PREFERRED_PROVIDER_virtual/bootloader = "u-boot-wand"
+
+# Since I can't seem to undo these defaults in the u-boot recipe 
+# I'm using forcevariable here
+UBOOT_MACHINE_forcevariable = "wandboard_config"
+SPL_BINARY_forcevariable = "SPL"
+UBOOT_MAKE_TARGET_forcevariable = "all"
+UBOOT_SUFFIX_forcevariable = "img"
 
 # wandboard has no hardware clock
 MACHINE_FEATURES_BACKFILL_CONSIDERED += "rtc"

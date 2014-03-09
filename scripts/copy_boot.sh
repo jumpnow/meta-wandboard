@@ -32,8 +32,18 @@ if [ ! -z "$OETMP" ]; then
 	cd ${OETMP}/deploy/images/${MACHINE}
 fi
 
-if [ ! -f u-boot-${MACHINE}.imx ]; then
-	echo -e "File not found: u-boot-${MACHINE}.imx\n"
+if [ ! -f u-boot-${MACHINE}.img ]; then
+	echo -e "File not found: u-boot-${MACHINE}.img\n"
+
+	if [ ! -z "$OETMP" ]; then
+		cd $OLDPWD
+	fi
+
+	exit 1
+fi
+
+if [ ! -f SPL-${MACHINE} ]; then
+	echo -e "File not found: SPL-${MACHINE}\n"
 
 	if [ ! -z "$OETMP" ]; then
 		cd $OLDPWD
@@ -53,8 +63,11 @@ if [ ! -f uImage-${MACHINE}.bin ]; then
 fi
 
 
+echo "Using dd to copy SPL to unpartitioned space"
+sudo dd if=SPL-${MACHINE} of=${DEV} bs=1k seek=1 oflag=dsync
+
 echo "Using dd to copy u-boot to unpartitioned space"
-sudo dd if=u-boot-${MACHINE}.imx of=${DEV} conv=notrunc seek=2 skip=0 bs=512
+sudo dd if=u-boot-${MACHINE}.img of=${DEV} bs=1k seek=69 oflag=dsync 
 
 echo -e "\nFormatting FAT partition on ${DEV}1 \n"
 sudo mkfs.vfat ${DEV}1 -n BOOT
