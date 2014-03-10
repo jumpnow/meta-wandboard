@@ -30,16 +30,11 @@ VIRTUAL_RUNTIME_init_manager = "sysvinit"
 MACHINE = "wandboard-quad"
 
 # Using the bootloader provided in the wandboard-sdk-20131225
-PREFERRED_PROVIDER_uboot = "u-boot-wand"
+PREFERRED_PROVIDER_u-boot = "u-boot-wand"
 PREFERRED_PROVIDER_virtual/bootloader = "u-boot-wand"
 
-# Since I can't seem to undo these defaults in the u-boot recipe 
-# I'm using forcevariable here
+# override machine/wandboard-quad.conf to get SPL config 
 UBOOT_MACHINE_forcevariable = "wandboard_config"
-SPL_BINARY_forcevariable = "SPL"
-UBOOT_MAKE_TARGET_forcevariable = "all"
-UBOOT_SUFFIX_forcevariable = "img"
-EXTRA_IMAGEDEPENDS_forcevariable = "u-boot-wand"
 
 # wandboard has no hardware clock
 MACHINE_FEATURES_BACKFILL_CONSIDERED += "rtc"
