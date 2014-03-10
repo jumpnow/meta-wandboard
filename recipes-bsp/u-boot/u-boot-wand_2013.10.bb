@@ -3,6 +3,10 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
 COMPATIBLE_MACHINE = "wandboard-quad"
 
+PROVIDES += "u-boot"
+
+PR = "r1"
+
 # These have no affect, though they are what I want 
 # Had to use forcevariable in local.conf instead 
 UBOOT_SUFFIX = "img"
