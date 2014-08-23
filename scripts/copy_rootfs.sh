@@ -15,6 +15,7 @@ fi
 
 if [ -z "$OETMP" ]; then
 	echo -e "\nWorking from local directory"
+	SRC=.
 else
 	echo -e "\nOETMP: $OETMP"
 
@@ -23,7 +24,7 @@ else
 		exit 1
 	fi
 
-	cd ${OETMP}/deploy/images/${MACHINE}
+	SRC=${OETMP}/deploy/images/${MACHINE}
 fi 
 
 echo "IMAGE: $IMAGE"
@@ -37,13 +38,8 @@ fi
 echo -e "HOSTNAME: $TARGET_HOSTNAME\n"
 
 
-if [ ! -f "${IMAGE}-image-${MACHINE}.tar.xz" ]; then
-        echo -e "File not found: ${IMAGE}-image-${MACHINE}.tar.xz\n"
-
-		if [ ! -z "$OETMP" ]; then
-			cd $OLDPWD
-		fi
-
+if [ ! -f "${SRC}/${IMAGE}-image-${MACHINE}.tar.xz" ]; then
+        echo -e "File not found: ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz\n"
         exit 1
 fi
 
@@ -57,7 +53,7 @@ if [ -b $DEV ]; then
 	sudo mount $DEV /media/card
 
 	echo "Extracting ${IMAGE}-image-${MACHINE}.tar.xz to /media/card"
-	sudo tar -C /media/card -xJf ${IMAGE}-image-${MACHINE}.tar.xz
+	sudo tar -C /media/card -xJf ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz
 
 	echo "Writing hostname to /etc/hostname"
 	export TARGET_HOSTNAME
@@ -77,10 +73,6 @@ if [ -b $DEV ]; then
 	sudo umount $DEV
 else
 	echo "Block device $DEV does not exist"
-fi
-
-if [ ! -z "$OETMP" ]; then
-	cd $OLDPWD
 fi
 
 echo "Done"

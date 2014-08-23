@@ -45,9 +45,10 @@ DEV_SDK_INSTALL = " \
  "
 
 DEV_EXTRAS = " \
-    avahi-daemon \
     ntp \
     ntp-tickadj \
+    opencv \
+    opencv-dev \
  "
 
 EXTRA_TOOLS_INSTALL = " \
