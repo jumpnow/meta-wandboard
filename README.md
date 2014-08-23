@@ -1,19 +1,23 @@
 This layer depends on:
 
         URI: git://git.yoctoproject.org/poky.git
-        branch: dora
+        branch: daisy
         revision: HEAD
-        commit: 84c2763 
+        commit: b2f045c 
 
         URI: git://git.openembedded.org/meta-openembedded
-        branch: dora
+        branch: daisy
         revision: HEAD
-        commit: 40e0f37 
+        commit: 7a35bc7 
 
-        URI: git://github.com/gumstix/meta-gumstix.git
-        branch: dora
+        URI: git://github.com/Freescale/meta-fsl-arm
+        branch: daisy
         revision: HEAD
-        commit: 9230aa4  
+        commit: 0aec281  
 
-        meta-overo layer maintainer: Scott Ellis <scott@jumpnowtek.com>
+        URI: git://github.com/Freescale/meta-fsl-arm-extra
+        branch: daisy
+        revision: HEAD
+        commit: 32f0d1b  
 
+        meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>

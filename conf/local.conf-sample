@@ -1,5 +1,5 @@
 # Local configuration for meta-duovero images
-# Yocto Project 1.5.1 Poky distribution 10.0.1, [dora] branch
+# Yocto Project 1.6.1 Poky distribution 11.0.1, [daisy] branch
 # This is a sysvinit system
 
 ACCEPT_FSL_EULA = "1"
@@ -11,17 +11,15 @@ IMAGE_FSTYPES_forcevariable = "tar.xz"
 # Important to override DISTRO_FEATURES or by default x11 and all its dependencies
 # will get built whether or not you use it in an image.
 DISTRO_FEATURES = "ext2 keyboard systemd usbhost wifi ${DISTRO_FEATURES_LIBC}"
-DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio opengl"
 
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
-BB_NUMBER_THREADS = "4"
-PARALLEL_MAKE = "-j 4"
+BB_NUMBER_THREADS = "6"
+PARALLEL_MAKE = "-j6"
 
-# Firmware loading is more reliable with this version of udev
 PREFERRED_PROVIDER_udev = "systemd"
 
-# the default, but make sure we still have a sysvinit system
 VIRTUAL_RUNTIME_init_manager = "sysvinit"
 
 MACHINE = "wandboard-quad"
@@ -29,11 +27,11 @@ MACHINE = "wandboard-quad"
 # wandboard has no hardware clock
 MACHINE_FEATURES_BACKFILL_CONSIDERED += "rtc"
 
-# DL_DIR = "/oe-sources"
+DL_DIR = "/oe-sources"
 
-# SSTATE_DIR = "/oe20/sstate-cache"
+# SSTATE_DIR = "/oe8/wand/sstate-cache"
 
-# TMPDIR = "/oe20/tmp-poky-dora-build"
+# TMPDIR = "/oe8/wand/tmp-poky-daisy-build"
 
 DISTRO = "poky"
 
