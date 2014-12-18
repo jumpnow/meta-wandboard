@@ -1,23 +1,23 @@
 This layer depends on:
 
         URI: git://git.yoctoproject.org/poky.git
-        branch: daisy
+        branch: dizzy
         revision: HEAD
-        commit: b2f045c 
+        commit: 9e8bb32 
 
         URI: git://git.openembedded.org/meta-openembedded
-        branch: daisy
+        branch: dizzy
         revision: HEAD
-        commit: 7a35bc7 
+        commit: 510b7a9 
 
         URI: git://github.com/Freescale/meta-fsl-arm
-        branch: daisy
+        branch: dizzy
         revision: HEAD
-        commit: 0aec281  
+        commit: 6d9cbab  
 
         URI: git://github.com/Freescale/meta-fsl-arm-extra
-        branch: daisy
+        branch: dizzy
         revision: HEAD
-        commit: 32f0d1b  
+        commit: 0e92e1f  
 
         meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>

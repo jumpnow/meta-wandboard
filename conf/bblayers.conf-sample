@@ -6,16 +6,17 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
-  ${HOME}/poky-daisy/meta \
-  ${HOME}/poky-daisy/meta-yocto \
-  ${HOME}/poky-daisy/meta-openembedded/meta-oe \
-  ${HOME}/poky-daisy/meta-openembedded/meta-networking \
+  ${HOME}/poky-dizzy/meta \
+  ${HOME}/poky-dizzy/meta-yocto \
+  ${HOME}/poky-dizzy/meta-openembedded/meta-oe \
+  ${HOME}/poky-dizzy/meta-openembedded/meta-networking \
+  ${HOME}/poky-dizzy/meta-openembedded/meta-python \
   ${HOME}/wandboard/meta-fsl-arm \
   ${HOME}/wandboard/meta-fsl-arm-extra \
   ${HOME}/wandboard/meta-wandboard \
   "
 
 BBLAYERS_NON_REMOVABLE ?= " \
-  ${HOME}/poky-daisy/meta \
-  ${HOME}/poky-daisy/meta-yocto \
+  ${HOME}/poky-dizzy/meta \
+  ${HOME}/poky-dizzy/meta-yocto \
   "

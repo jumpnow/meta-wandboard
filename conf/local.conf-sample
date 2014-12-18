@@ -1,12 +1,14 @@
 # Local configuration for meta-duovero images
-# Yocto Project 1.6.1 Poky distribution 11.0.1, [daisy] branch
+# Yocto Project 1.7.0 Poky distribution 12.0.0, [dizzy] branch
 # This is a sysvinit system
 
 ACCEPT_FSL_EULA = "1"
 
 LICENSE_FLAGS_WHITELIST = "commercial"
 
+# since we don't have a custom machine.conf ...
 IMAGE_FSTYPES_forcevariable = "tar.xz"
+EXTRA_IMAGEDEPENDS += " u-boot"
 
 # Important to override DISTRO_FEATURES or by default x11 and all its dependencies
 # will get built whether or not you use it in an image.
@@ -27,11 +29,11 @@ MACHINE = "wandboard-quad"
 # wandboard has no hardware clock
 MACHINE_FEATURES_BACKFILL_CONSIDERED += "rtc"
 
-DL_DIR = "/oe-sources"
+# DL_DIR = "/oe-sources"
 
 # SSTATE_DIR = "/oe8/wand/sstate-cache"
 
-# TMPDIR = "/oe8/wand/tmp-poky-daisy-build"
+# TMPDIR = "/oe8/wand/tmp-poky-dizzy-build"
 
 DISTRO = "poky"
 
