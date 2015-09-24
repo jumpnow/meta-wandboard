@@ -1,8 +1,0 @@
-# Optional gpsd parameters 
-#  -b                        = bluetooth-safe: open data sources read-only
-#  -n                        = don't wait for client connects to poll GPS
-#
-GPSD_ENABLE=yes
-GPSD_SOCKET="/var/run/gpsd.sock"
-GPSD_OPTIONS="-b -n"
-GPS_DEVICES="/dev/rfcomm0"
