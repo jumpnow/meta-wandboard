@@ -6,17 +6,16 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
-  ${HOME}/poky-dizzy/meta \
-  ${HOME}/poky-dizzy/meta-yocto \
-  ${HOME}/poky-dizzy/meta-openembedded/meta-oe \
-  ${HOME}/poky-dizzy/meta-openembedded/meta-networking \
-  ${HOME}/poky-dizzy/meta-openembedded/meta-python \
-  ${HOME}/wandboard/meta-fsl-arm \
-  ${HOME}/wandboard/meta-fsl-arm-extra \
+  ${HOME}/poky-fido/meta \
+  ${HOME}/poky-fido/meta-yocto \
+  ${HOME}/poky-fido/meta-openembedded/meta-oe \
+  ${HOME}/poky-fido/meta-openembedded/meta-networking \
+  ${HOME}/poky-fido/meta-openembedded/meta-python \
+  ${HOME}/poky-fido/meta-qt5 \
   ${HOME}/wandboard/meta-wandboard \
   "
 
 BBLAYERS_NON_REMOVABLE ?= " \
-  ${HOME}/poky-dizzy/meta \
-  ${HOME}/poky-dizzy/meta-yocto \
+  ${HOME}/poky-fido/meta \
+  ${HOME}/poky-fido/meta-yocto \
   "

@@ -18,7 +18,11 @@ KERNEL_EXTRA_INSTALL = " \
  "
 
 WIFI_SUPPORT = " \
+    bcm4329-nvram-config \
+    bcm4330-nvram-config \
+    crda \
     iw \
+    wireless-tools \
     wpa-supplicant \
  "
 
@@ -41,17 +45,25 @@ DEV_SDK_INSTALL = " \
     libstdc++-dev \
     libtool \
     make \
+    perl-modules \
     pkgconfig \
  "
 
 DEV_EXTRAS = " \
     ntp \
     ntp-tickadj \
-    opencv \
-    opencv-dev \
+    serialecho \
+    spiloop \
+ "
+
+PYTHON_SUPPORT = " \
+    python-core \
+    python-fcntl \
+    python-subprocess \
  "
 
 EXTRA_TOOLS_INSTALL = " \
+    bc \
     bzip2 \
     ethtool \
     findutils \
@@ -62,8 +74,10 @@ EXTRA_TOOLS_INSTALL = " \
     less \
     nano \
     procps \
+    rsync \
     sysfsutils \
     tcpdump \
+    util-linux \
     unzip \
     wget \
     zip \

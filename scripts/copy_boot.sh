@@ -1,7 +1,9 @@
 #!/bin/bash
 #
 
-MACHINE=wandboard-quad
+MACHINE=wandboard
+
+DTBLIST="imx6q-${MACHINE} imx6q-${MACHINE}-revb1 imx6dl-${MACHINE} imx6dl-${MACHINE}-revb1"
 
 if [ "x${1}" = "x" ]; then
 	echo -e "\nUsage: ${0} <block device>\n"
@@ -31,24 +33,33 @@ else
 	SRC=${OETMP}/deploy/images/${MACHINE}
 fi 
 
-if [ ! -f ${SRC}/u-boot-${MACHINE}.imx ]; then
-	echo -e "File not found: ${SRC}/u-boot-${MACHINE}.imx\n"
+if [ ! -f ${SRC}/SPL-${MACHINE} ]; then
+	echo "File not found: ${SRC}/SPL-${MACHINE}"
+	exit 1
+fi
+
+if [ ! -f ${SRC}/u-boot-${MACHINE}.img ]; then
+	echo "File not found: ${SRC}/u-boot-${MACHINE}.img"
 	exit 1
 fi
 
 if [ ! -f ${SRC}/zImage-${MACHINE}.bin ]; then
-	echo -e "File not found: ${SRC}/zImage-${MACHINE}.bin\n"
+	echo "File not found: ${SRC}/zImage-${MACHINE}.bin"
 	exit 1
 fi
 
-if [ ! -f ${SRC}/zImage-imx6q-wandboard.dtb ]; then
-	echo -e "File not found: ${SRC}/zImage-imx6q-wandboard.dtb\n"
-	exit 1
-fi
-
+for dtb in ${DTBLIST}; do
+	if [ ! -f ${SRC}/zImage-${dtb}.dtb ]; then
+		echo "DTB file not found: ${SRC}/zImage-${dtb}.dtb"
+		exit 1
+	fi
+done
+    
+echo "Using dd to copy SPL to unpartitioned space"
+sudo dd if=${SRC}/SPL-${MACHINE} of=${DEV} conv=notrunc seek=2 skip=0 bs=512
 
 echo "Using dd to copy u-boot to unpartitioned space"
-sudo dd if=${SRC}/u-boot-${MACHINE}.imx of=${DEV} conv=notrunc seek=2 skip=0 bs=512
+sudo dd if=${SRC}/u-boot-${MACHINE}.img of=${DEV} conv=notrunc seek=69 skip=0 bs=1K
 
 echo -e "\nFormatting FAT partition on ${DEV}1 \n"
 sudo mkfs.vfat ${DEV}1 -n BOOT
@@ -59,8 +70,10 @@ sudo mount ${DEV}1 /media/card
 echo "Copying zImage"
 sudo cp ${SRC}/zImage-${MACHINE}.bin /media/card/zImage
 
-echo "Copying dtb"
-sudo cp ${SRC}/zImage-imx6q-wandboard.dtb /media/card/imx6q-wandboard.dtb
+for dtb in ${DTBLIST}; do
+	echo "Copying ${dtb}.dtb"
+	sudo cp ${SRC}/zImage-${dtb}.dtb /media/card/${dtb}.dtb
+done
 
 echo "Unmounting ${DEV}1"
 sudo umount ${DEV}1
