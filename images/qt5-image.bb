@@ -16,7 +16,6 @@ QT_TOOLS = " \
 
 IMAGE_INSTALL += " \
     ${QT_TOOLS} \
-    tspress \
  "
 
 export IMAGE_BASENAME = "qt5-image"
