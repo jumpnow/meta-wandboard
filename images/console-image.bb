@@ -54,6 +54,8 @@ DEV_EXTRAS = " \
     ntp-tickadj \
     serialecho \
     spiloop \
+    zeromq \
+    zeromq-dev \
  "
 
 PYTHON_SUPPORT = " \
