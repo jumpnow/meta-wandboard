@@ -14,7 +14,13 @@ QT_TOOLS = " \
     qt5-env \
  "
 
+QT_APPS = " \
+    qcolorcheck \
+    tspress \
+ "
+
 IMAGE_INSTALL += " \
+    ${QT_APPS} \
     ${QT_TOOLS} \
  "
 
