@@ -47,6 +47,7 @@ DEV_SDK_INSTALL = " \
     make \
     perl-modules \
     pkgconfig \
+    python-modules \
  "
 
 DEV_EXTRAS = " \
@@ -56,12 +57,6 @@ DEV_EXTRAS = " \
     spiloop \
     zeromq \
     zeromq-dev \
- "
-
-PYTHON_SUPPORT = " \
-    python-core \
-    python-fcntl \
-    python-subprocess \
  "
 
 EXTRA_TOOLS_INSTALL = " \
