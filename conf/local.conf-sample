@@ -13,6 +13,8 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio opengl"
 PREFERRED_PROVIDER_udev = "systemd"
 VIRTUAL_RUNTIME_init_manager = "sysvinit"
 
+PREFERRED_PROVIDER_jpeg = "jpeg"
+
 PACKAGECONFIG_FB_pn-qtbase = "linuxfb"
 
 MACHINE = "wandboard"
