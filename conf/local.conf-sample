@@ -1,5 +1,5 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 1.8.1 Poky distribution 13.0.0 [fido] branch
+# Yocto Project 2.0.0 Poky distribution [jethro] branch
 # This is a sysvinit system
 
 LICENSE_FLAGS_WHITELIST = "commercial"
@@ -21,16 +21,16 @@ MACHINE = "wandboard"
 
 #DL_DIR = "/oe-sources"
 
-#SSTATE_DIR = "/oe7/bbb/sstate-cache"
+#SSTATE_DIR = "/oe7/wand/sstate-cache"
 
-#TMPDIR = "/oe7/bbb/tmp-poky-fido-build"
+#TMPDIR = "/oe7/wand/tmp-poky-jethro-build"
 
 DISTRO = "poky"
 
 PACKAGE_CLASSES = "package_ipk"
 
 # i686 or x86_64
-# SDKMACHINE = "x86_64"
+#SDKMACHINE = "x86_64"
 
 EXTRA_IMAGE_FEATURES = "debug-tweaks"
 
