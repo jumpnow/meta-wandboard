@@ -3,6 +3,10 @@
 # Create 2 partitions for a Wandboard O/S
 #
 
+function ver() {
+        printf "%03d%03d%03d" $(echo "$1" | tr '.' ' ')
+}
+
 if [ -n "$1" ]; then
 	DRIVE=/dev/$1
 else
@@ -40,9 +44,16 @@ if [ "$SIZE" -lt 1800000000 ]; then
 	exit 1
 fi
 
-CYLINDERS=`echo $SIZE/255/63/512 | bc`
+# new versions of sfdisk don't use rotating disk params
+sfdisk_ver=`sfdisk --version | awk '{ print $4 }'`
 
-echo CYLINDERS – $CYLINDERS
+if [ $(ver $sfdisk_ver) -lt $(ver 2.26.2) ]; then
+	CYLINDERS=`echo $SIZE/255/63/512 | bc`
+	echo CYLINDERS – $CYLINDERS
+	SFDISK_CMD="sfdisk --force -D -uS -H255 -S63 -C ${CYLINDERS}"
+else
+	SFDISK_CMD="sfdisk"
+fi
 
 echo -e "\nOkay, here we go ...\n"
 
@@ -59,7 +70,7 @@ echo -e "\n=== Creating 2 partitions ===\n"
 {
 echo 8192,16384,0x0C,*
 echo 24576,,,-
-} | sfdisk --force -D -uS -H 255 -S 63 -C $CYLINDERS $DRIVE
+} | $SFDISK_CMD $DRIVE
 
 
 sleep 1

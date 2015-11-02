@@ -3,7 +3,7 @@ This layer depends on:
     URI: git://git.yoctoproject.org/poky.git
     branch: fido
     revision: HEAD
-    commit: 6b421cd 
+    commit: fa55b8e 
 
     URI: git://git.openembedded.org/meta-openembedded
     branch: fido
