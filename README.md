@@ -8,11 +8,11 @@ This layer depends on:
     URI: git://git.openembedded.org/meta-openembedded
     branch: jethro 
     revision: HEAD
-    commit: c63423e 
+    commit: 7341805 
 
     URI: https://github.com/meta-qt5/meta-qt5.git
     branch: jethro 
     revision: HEAD
-    commit: e53fce8 
+    commit: f39bc18 
 
     meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
