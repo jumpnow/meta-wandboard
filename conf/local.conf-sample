@@ -1,5 +1,5 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 2.0.0 Poky distribution [jethro] branch
+# Yocto Project 2.0.1 Poky distribution [jethro] branch
 # This is a sysvinit system
 
 LICENSE_FLAGS_WHITELIST = "commercial"
@@ -13,7 +13,7 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio opengl"
 PREFERRED_PROVIDER_udev = "systemd"
 VIRTUAL_RUNTIME_init_manager = "sysvinit"
 
-PREFERRED_PROVIDER_jpeg = "jpeg"
+PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
 PACKAGECONFIG_FB_pn-qtbase = "linuxfb"
 
@@ -23,7 +23,7 @@ MACHINE = "wandboard"
 
 #SSTATE_DIR = "/oe7/wand/sstate-cache"
 
-#TMPDIR = "/oe7/wand/tmp-poky-jethro-build"
+#TMPDIR = "/oe7/wand/tmp-jethro"
 
 DISTRO = "poky"
 
