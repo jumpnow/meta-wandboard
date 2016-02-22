@@ -16,6 +16,8 @@ QT_TOOLS = " \
 
 QT_APPS = " \
     qcolorcheck \
+    qkeytest \
+    qshowfonts \
     tspress \
  "
 
