@@ -1,18 +1,18 @@
 This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
-    branch: jethro 
+    branch: jethro
     revision: HEAD
-    commit: 2fb7ee2 
+    commit: b1f23d1
 
     URI: git://git.openembedded.org/meta-openembedded
-    branch: jethro 
+    branch: jethro
     revision: HEAD
-    commit: ad6133a 
+    commit: dc56349
 
     URI: https://github.com/meta-qt5/meta-qt5.git
-    branch: jethro 
+    branch: jethro
     revision: HEAD
-    commit: d5536e3 
+    commit: 9bfcf79
 
     meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
