@@ -20,7 +20,6 @@ KERNEL_EXTRA_INSTALL = " \
 WIFI_SUPPORT = " \
     bcm4329-nvram-config \
     bcm4330-nvram-config \
-    crda \
     iw \
     wireless-tools \
     wpa-supplicant \
