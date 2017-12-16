@@ -15,6 +15,7 @@ CORE_OS = " \
 
 KERNEL_EXTRA_INSTALL = " \
     kernel-modules \
+    wandboard-u-boot-scr \
 "
 
 WIFI_SUPPORT = " \
