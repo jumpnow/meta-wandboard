@@ -1,2 +1,3 @@
-scripts/boot.scr
+scripts/interfaces
+scripts/wpa_supplicant.conf
 *~

@@ -1,35 +1,10 @@
-# Copy this file to your $OETMP/deploy/images directory and 
-# rename it 'interfaces'. 
-# Then edit it to suit your configuration.
-# The script copy_rootfs.sh will copy it to the SD card.
-# The values shown below are the default configuration.
-
 auto lo
 iface lo inet loopback
 
-### wired, dhcp
-auto eth0
+#auto eth0
 iface eth0 inet dhcp
 
-### wired, static
-#auto eth0
-#iface eth0 inet static
-#	address 192.168.10.33
-#	netmask 255.255.255.0
-#	gateway 192.168.10.1
-
-### wireless, dhcp
-#auto wlan0
-#iface wlan0 inet dhcp
-#     pre-up wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant.conf -B
-#     down killall wpa_supplicant
-
-### wireless, static
-#auto wlan0
-#iface wlan0 inet static 
-#     pre-up wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant.conf -B
-#     address 192.168.10.33
-#     netmask 255.255.255.0
-#     gateway 192.168.10.1
-#     down killall wpa_supplicant
-
+auto wlan0
+iface wlan0 inet dhcp
+        wireless_mode managed
+        wpa-conf /etc/wpa_supplicant.conf
