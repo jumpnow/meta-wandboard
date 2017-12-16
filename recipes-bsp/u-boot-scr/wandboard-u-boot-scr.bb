@@ -11,11 +11,9 @@ do_compile() {
     mkimage -A arm -T script -C none -n "Boot script" -d "${WORKDIR}/boot.cmd" boot.scr
 }
 
-inherit deploy
-
-do_deploy() {
-    install -d ${DEPLOYDIR}
-    install -m 0644 boot.scr ${DEPLOYDIR}
+do_install() {
+    install -d ${D}/boot
+    install -m 0644 boot.scr ${D}/boot
 }
 
-addtask do_deploy after do_compile before do_build
+FILES_${PN} = "/boot"

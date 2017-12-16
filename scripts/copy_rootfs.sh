@@ -47,11 +47,6 @@ if [ ! -f "${SRC}/${IMAGE}-image-${MACHINE}.tar.xz" ]; then
     exit 1
 fi
 
-if [ ! -f "${SRC}/boot.scr" ]; then
-    echo -e "File not found: ${SRC}/boot.scr\n"
-    exit 1
-fi
-
 DEV=/dev/${1}1
 
 if [ ! -b $DEV ]; then
@@ -67,9 +62,6 @@ sudo mount $DEV /media/card
 
 echo "Extracting ${IMAGE}-image-${MACHINE}.tar.xz to /media/card"
 sudo tar -C /media/card -xJf ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz
-
-echo "Copying boot.scr to /boot"
-sudo cp ${SRC}/boot.scr /media/card/boot
 
 echo "Writing hostname to /etc/hostname"
 export TARGET_HOSTNAME
