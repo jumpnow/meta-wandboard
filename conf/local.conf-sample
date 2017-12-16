@@ -13,7 +13,7 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 PREFERRED_PROVIDER_udev = "eudev"
 VIRTUAL_RUNTIME_init_manager = "sysvinit"
 
-PREFERRED_VERSION_linux-stable = "4.4.%"
+#PREFERRED_VERSION_linux-stable = "4.9.%"
 
 MACHINE = "wandboard"
 
