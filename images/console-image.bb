@@ -11,19 +11,21 @@ CORE_OS = " \
     openssh openssh-keygen openssh-sftp-server \
     term-prompt \
     tzdata \
- "
+"
 
 KERNEL_EXTRA_INSTALL = " \
     kernel-modules \
- "
+"
 
 WIFI_SUPPORT = " \
     bcm4329-nvram-config \
     bcm4330-nvram-config \
+    crda \
     iw \
+    rfkill \
     wireless-tools \
     wpa-supplicant \
- "
+"
 
 DEV_SDK_INSTALL = " \
     binutils \
@@ -44,31 +46,29 @@ DEV_SDK_INSTALL = " \
     libstdc++-dev \
     libtool \
     make \
-    perl-modules \
     pkgconfig \
-    python-modules \
- "
+    python3-modules \
+"
 
 DEV_EXTRAS = " \
     ntp \
     ntp-tickadj \
     serialecho \
-    spiloop \
-    zeromq \
-    zeromq-dev \
- "
+"
 
 EXTRA_TOOLS_INSTALL = " \
-    bc \
     bzip2 \
     ethtool \
+    fbset \
     findutils \
     i2c-tools \
-    iftop \
-    iperf \
-    htop \
+    iperf3 \
+    iproute2 \
+    iptables \
     less \
+    memtester \
     nano \
+    netcat \
     procps \
     rsync \
     sysfsutils \
@@ -77,7 +77,7 @@ EXTRA_TOOLS_INSTALL = " \
     unzip \
     wget \
     zip \
- "
+"
 
 IMAGE_INSTALL += " \
     ${CORE_OS} \
@@ -86,7 +86,7 @@ IMAGE_INSTALL += " \
     ${EXTRA_TOOLS_INSTALL} \
     ${KERNEL_EXTRA_INSTALL} \
     ${WIFI_SUPPORT} \
- "
+"
 
 IMAGE_FILE_BLACKLIST += " \
     /etc/init.d/hwclock.sh \
@@ -113,4 +113,3 @@ ROOTFS_POSTPROCESS_COMMAND += " \
  "
 
 export IMAGE_BASENAME = "console-image"
-

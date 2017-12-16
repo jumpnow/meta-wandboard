@@ -1,38 +1,39 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 2.0.1 Poky distribution [jethro] branch
+# Yocto Project 2.4 Poky distribution [rocko] branch
 # This is a sysvinit system
 
 LICENSE_FLAGS_WHITELIST = "commercial"
 
-# Important to override DISTRO_FEATURES or by default x11 and all its dependencies
-# will get built whether or not you use it in an image.
-DISTRO_FEATURES = "ext2 systemd usbhost ${DISTRO_FEATURES_LIBC}"
+DISTRO_FEATURES = "ext2 usbhost ${DISTRO_FEATURES_LIBC}"
+
 # remove opengl so opencv builds cleanly, remove pulseaudio since it brings in x11
 DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio opengl"
 
-PREFERRED_PROVIDER_udev = "systemd"
-VIRTUAL_RUNTIME_init_manager = "sysvinit"
-
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
-PACKAGECONFIG_FB_pn-qtbase = "linuxfb"
+PREFERRED_PROVIDER_udev = "eudev"
+VIRTUAL_RUNTIME_init_manager = "sysvinit"
+
+PREFERRED_VERSION_linux-stable = "4.4"
 
 MACHINE = "wandboard"
 
-#DL_DIR = "/oe-sources"
+#DL_DIR = "${HOME}/oe-sources"
 
-#SSTATE_DIR = "/oe7/wand/sstate-cache"
+#SSTATE_DIR = "/oe9/wand/sstate-cache"
 
-#TMPDIR = "/oe7/wand/tmp-jethro"
+#TMPDIR = "/oe9/wand/tmp-rocko"
 
 DISTRO = "poky"
 
 PACKAGE_CLASSES = "package_ipk"
 
 # i686 or x86_64
-#SDKMACHINE = "x86_64"
+SDKMACHINE = "x86_64"
 
 EXTRA_IMAGE_FEATURES = "debug-tweaks"
+#INHERIT += "extrausers"
+#EXTRA_USERS_PARAMS = "usermod -P jumpnowtek root; "
 
 USER_CLASSES = "image-mklibs image-prelink"
 
@@ -41,4 +42,3 @@ PATCHRESOLVE = "noop"
 RM_OLD_IMAGE = "1"
 
 CONF_VERSION = "1"
-
