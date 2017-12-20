@@ -7,11 +7,13 @@ if [ "x${1}" = "x" ]; then
     exit 0
 fi
 
-DEV=/dev/${1}
-
-if [ ! -b $DEV ]; then
-    echo -e "\nBlock device not found: ${DEV}\n"
-    exit 0
+if [ -b ${1} ]; then
+    DEV=${1}
+elif [ -b "/dev/${1}" ]; then
+    DEV=/dev/${1}
+else
+    echo "Block device not found: /dev/${1}"
+    exit 1
 fi
 
 echo -e "MACHINE: $MACHINE\n"

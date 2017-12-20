@@ -47,10 +47,14 @@ if [ ! -f "${SRC}/${IMAGE}-image-${MACHINE}.tar.xz" ]; then
     exit 1
 fi
 
-DEV=/dev/${1}1
-
-if [ ! -b $DEV ]; then
-    echo "Block device $DEV does not exist"
+if [ -b ${1} ]; then
+    DEV=${1}
+elif [ -b "/dev/${1}1" ]; then
+    DEV=/dev/${1}1
+elif [ -b "/dev/${1}p1" ]; then
+    DEV=/dev/${1}p1
+else
+    echo "Block device not found: /dev/${1}1 or /dev/${1}p1"
     exit 1
 fi
 
