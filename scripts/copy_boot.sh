@@ -3,7 +3,7 @@
 MACHINE=wandboard
 
 if [ "x${1}" = "x" ]; then
-    echo -e "\nUsage: ${0} <block device>\n"
+    echo "Usage: ${0} <block device>"
     exit 0
 fi
 
@@ -16,13 +16,13 @@ else
     exit 1
 fi
 
-echo -e "MACHINE: $MACHINE\n"
+echo "MACHINE: $MACHINE"
 
 if [ -z "$OETMP" ]; then
-    echo -e "\nWorking from local directory"
+    echo "Working from local directory"
     SRC=.
 else
-    echo -e "\nOETMP: $OETMP"
+    echo "OETMP: $OETMP"
 
     if [ ! -d ${OETMP}/deploy/images/${MACHINE} ]; then
         echo "Directory not found: ${OETMP}/deploy/images/${MACHINE}"
