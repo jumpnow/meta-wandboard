@@ -1,0 +1,25 @@
+From d96ffa96d9ac3d37fac6b5d0690edfe88d4d62e8 Mon Sep 17 00:00:00 2001
+From: Scott Ellis <scott@jumpnowtek.com>
+Date: Fri, 29 Dec 2017 15:33:39 -0500
+Subject: [PATCH 2/2] Add environment debug
+
+---
+ env/mmc.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/env/mmc.c b/env/mmc.c
+index 3f3092d..0d14406 100644
+--- a/env/mmc.c
++++ b/env/mmc.c
+@@ -172,6 +172,8 @@ static int env_mmc_save(void)
+ 		goto fini;
+ 	}
+ 
++	printf("Env Offset: 0x%08x\n", offset);
++
+ 	printf("Writing to %sMMC(%d)... ", copy ? "redundant " : "", dev);
+ 	if (write_env(mmc, CONFIG_ENV_SIZE, offset, (u_char *)env_new)) {
+ 		puts("failed\n");
+-- 
+2.7.4
+
