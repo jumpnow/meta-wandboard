@@ -1,12 +1,10 @@
 require recipes-kernel/linux/linux-yocto.inc
 
-KERNEL_IMAGETYPE = "zImage"
-
 COMPATIBLE_MACHINE = "wandboard"
 
 RDEPENDS_kernel-base += "kernel-devicetree"
 
-KERNEL_DEVICETREE = " \
+KERNEL_DEVICETREE ?= " \
     imx6q-wandboard.dtb \
     imx6q-wandboard-revb1.dtb \
     imx6dl-wandboard.dtb \
@@ -20,8 +18,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/linux-stable-${LINUX_VERSION}:"
 
 S = "${WORKDIR}/git"
 
-PV = "4.9.72"
-SRCREV = "2df397931072ff4e66f9e42ae1f1630c03513ce7"
+PV = "4.9.74"
+SRCREV = "07bcb2489b96b2bd8b030822b4495e4a18c7b5da"
 SRC_URI = " \
     git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;branch=linux-${LINUX_VERSION}.y \
     file://defconfig \

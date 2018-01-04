@@ -13,9 +13,8 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 PREFERRED_PROVIDER_udev = "eudev"
 VIRTUAL_RUNTIME_init_manager = "sysvinit"
 
-#PREFERRED_VERSION_linux-stable = "4.9.%"
-
 MACHINE = "wandboard"
+#KERNEL_DEVICETREE = "imx6q-wandboard-revb1.dtb"
 
 #DL_DIR = "${HOME}/oe-sources"
 
