@@ -51,7 +51,7 @@ if [ ! -f "${srcdir}/${img_long}.tar.xz" ]; then
     exit 1
 fi
 
-sdimg=wandq-${img_name}-${cardsize}gb.img
+sdimg=${MACHINE}-${img_name}-${cardsize}gb.img
 
 if [ -f "${dstdir}/${sdimg}" ]; then
     rm ${dstdir}/${sdimg}
