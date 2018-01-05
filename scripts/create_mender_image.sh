@@ -26,8 +26,13 @@ fi
 TMPDIR=$(grep "^TMPDIR" ${local_conf} | awk '{ print $3; }' | sed 's/"//g')
 
 if [ -z "${TMPDIR}" ]; then
-    echo "TMPDIR definition not found in local.conf"
-    exit 1
+    if [ -d "${TOPDIR}/build/tmp" ]; then
+        # assume the default
+        TMPDIR=${TOPDIR}/build/tmp
+    else
+        echo "TMPDIR definition not found in local.conf"
+        exit 1
+    fi
 fi
 
 dstdir=${TOPDIR}/upload
