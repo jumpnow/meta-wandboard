@@ -2,7 +2,9 @@
 
 IMG=mender-test
 
-TOPDIR="${HOME}/wandboard"
+if [ -z ${TOPDIR} ]; then
+    TOPDIR="${HOME}/wandboard"
+fi
 
 if [ ! -d ${TOPDIR}/build ]; then
     echo "Build directory not found: ${TOPDIR}/build"

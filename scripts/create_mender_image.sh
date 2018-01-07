@@ -1,6 +1,9 @@
 #!/bin/bash
 
-TOPDIR=${HOME}/wandboard
+if [ -z ${TOPDIR} ]; then
+    TOPDIR=${HOME}/wandboard
+fi
+
 img_name=mender-test
 cardsize=4
 
