@@ -16,6 +16,13 @@ else
     exit 1
 fi
 
+grep -q [1-9] <(echo $DEV)
+
+if [ $? -eq 0 ]; then
+   echo "Block device should not have a partition: $DEV"
+   exit 1
+fi
+
 echo "MACHINE: $MACHINE"
 
 if [ -z "$OETMP" ]; then
