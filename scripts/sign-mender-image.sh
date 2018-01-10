@@ -3,7 +3,9 @@
 IMG=mender-test
 
 if [ -z ${TOPDIR} ]; then
-    TOPDIR="${HOME}/wandboard"
+    cd ../..
+    TOPDIR=${PWD}
+    cd ${OLDPWD}
 fi
 
 if [ ! -d ${TOPDIR}/build ]; then
