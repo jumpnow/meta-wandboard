@@ -132,7 +132,7 @@ sudo losetup -P ${loopdev} ${dstdir}/${sdimg}
 export OETMP=${TMPDIR}
 
 echo "***** Copying the boot partition *****"
-dev=${loopdev}p1
+dev=${loopdev}
 ./copy_boot.sh ${dev}
 
 if [ $? -ne 0 ]; then
