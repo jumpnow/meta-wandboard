@@ -12,5 +12,5 @@ BBLAYERS ?= " \
   ${HOME}/poky-rocko/meta-openembedded/meta-networking \
   ${HOME}/poky-rocko/meta-openembedded/meta-python \
   ${HOME}/poky-rocko/meta-mender/meta-mender-core \
-  ${HOME}/wand-mender/meta-wandboard \
+  ${HOME}/wandboard/meta-wandboard \
 "
