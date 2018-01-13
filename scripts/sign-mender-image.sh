@@ -92,8 +92,17 @@ if [ $? -eq 0 ]; then
     echo "Wrote artifact to ${DST}"
     echo "Checking artifact"
     echo ""
+    ${MENDER} validate ${DST} -k ${PUBLIC_KEY}
+
+    if [ $? -ne 0 ]; then
+        echo "FAIL - Artifact signing validation failed!!!"
+        # so we don't accidently use it
+        mv ${DST} ${DST}-bad
+        exit 1
+    fi
+
     ${MENDER} read ${DST} -k ${PUBLIC_KEY} 
-    echo ""
 else
-    echo "Failed to create signed artifact"
+    echo "FAIL - Artifact creation failed!!!"
+    exit 1
 fi
