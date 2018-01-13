@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# An example Mender state script.
+#
+# Retain ssh server keys from the current root.
+# 
+
+echo "$(cat /etc/mender/artifact_info): Running $(basename "$0")" >&2
+
+if [ ! -d /data ]; then
+    exit 1 
+fi
+
+current=$(mount | head -n 1 | awk '{ print $1; }')
+
+if [ $current = "@@ROOTDEV@@p2" ]; then
+    newroot=@@ROOTDEV@@p3
+elif [ $current = "@@ROOTDEV@@p3" ]; then
+    newroot=@@ROOTDEV@@p2
+else
+    echo "Unexpected current root: $current" >&2
+    exit 1 
+fi
+
+mount $newroot /mnt
+
+if [ $? -ne 0 ]; then
+    echo "Failed to mount $newroot" >&2
+    exit 1 
+fi
+
+sleep 2
+
+if [ -d /mnt/etc/ssh ]; then
+    keys=$(ls -l /mnt/etc/ssh/*key* | wc -l)
+
+    if [ $keys -eq 0 ]; then
+        cp /etc/ssh/*key* /mnt/etc/ssh
+    else
+        echo "Found ssh keys in new root, skipping copy" >&2
+    fi
+else
+    echo "Failed to find a /etc/ssh on newroot partition" >&2
+    exit 1
+fi
+
+umount $newroot
