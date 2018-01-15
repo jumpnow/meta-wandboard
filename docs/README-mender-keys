@@ -1,18 +1,13 @@
-$ openssl ecparam -genkey -name prime256v1 -out private-and-params.key
+openssl genpkey -algorithm RSA -out private.key -pkeyopt rsa_keygen_bits:3072
 
-$ openssl ec -in private-and-params.key -out private.key
-read EC key
-writing EC key
+openssl rsa -in private.key -out private.key
 
-$ openssl ec -in private-and-params.key -pubout -out public.key
-read EC key
-writing EC key
+openssl rsa -in private.key -out public.key -pubout
 
-$ ls -l
-total 12
--rw-rw-r-- 1 scott scott 302 Dec 28 14:11 private-and-params.key
--rw-rw-r-- 1 scott scott 227 Dec 28 14:12 private.key
--rw-rw-r-- 1 scott scott 178 Dec 28 14:12 public.key
+~/wandboard/mender-keys$ ls -l
+total 8
+-rw-rw-r-- 1 scott scott 2459 Jan 15 05:26 private.key
+-rw-rw-r-- 1 scott scott  625 Jan 15 05:26 public.key
 
 The public key gets copied to
 
