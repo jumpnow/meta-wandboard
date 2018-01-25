@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.14.12 Kernel Configuration
+# Linux/arm 4.14.14 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -3548,7 +3548,7 @@ CONFIG_CLKSRC_IMX_GPT=y
 # Qualcomm SoC drivers
 #
 # CONFIG_SUNXI_SRAM is not set
-CONFIG_SOC_TI=y
+# CONFIG_SOC_TI is not set
 CONFIG_PM_DEVFREQ=y
 
 #
