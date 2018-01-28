@@ -11,11 +11,11 @@ CORE_OS = " \
     openssh openssh-keygen openssh-sftp-server \
     term-prompt \
     tzdata \
+    u-boot-scr \
 "
 
 KERNEL_EXTRA_INSTALL = " \
     kernel-modules \
-    wandboard-u-boot-scr \
 "
 
 WIFI_SUPPORT = " \
