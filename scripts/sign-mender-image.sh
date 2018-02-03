@@ -91,7 +91,6 @@ ${MENDER} write rootfs-image -t ${MACHINE} -n ${NAME} -u ${SRC} -k ${PRIVATE_KEY
 if [ $? -eq 0 ]; then
     echo "Wrote artifact to ${DST}"
     echo "Checking artifact"
-    echo ""
     ${MENDER} validate ${DST} -k ${PUBLIC_KEY}
 
     if [ $? -ne 0 ]; then
