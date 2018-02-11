@@ -12,6 +12,20 @@ CORE_OS = " \
     tzdata \
 "
 
+KERNEL_EXTRA_INSTALL = " \
+    kernel-modules \
+"
+
+WIFI_SUPPORT = " \
+    bcm4329-nvram-config \
+    bcm4330-nvram-config \
+    crda \
+    iw \
+    rfkill \
+    wireless-tools \
+    wpa-supplicant \
+"
+
 DEV_EXTRAS = " \
     ntp \
     ntp-tickadj \
@@ -45,7 +59,9 @@ IMAGE_INSTALL += " \
     ${CORE_OS} \
     ${DEV_EXTRAS} \
     ${EXTRA_TOOLS_INSTALL} \
+    ${KERNEL_EXTRA_INSTALL} \
     ${MENDER_EXTRA} \
+    ${WIFI_SUPPORT} \
 "
 
 set_local_timezone() {
