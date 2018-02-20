@@ -13,13 +13,16 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 PREFERRED_PROVIDER_udev = "eudev"
 
 MACHINE = "wandboard"
-KERNEL_DEVICETREE = "imx6q-wandboard-revb1.dtb"
+KERNEL_DEVICETREE = " \
+    imx6dl-wandboard.dtb \
+    imx6dl-wandboard-revb1.dtb \
+    imx6q-wandboard.dtb \
+    imx6q-wandboard-revb1.dtb \
+"
 
 #DL_DIR = "${HOME}/oe-sources"
-
-#SSTATE_DIR = "/oe9/wandm/sstate-cache"
-
-#TMPDIR = "/oe9/wandm/tmp-rocko"
+#SSTATE_DIR = "/oe8/wandm/sstate-cache"
+#TMPDIR = "/oe8/wandm/tmp-rocko"
 
 DISTRO = "poky"
 
@@ -33,17 +36,13 @@ INHERIT += "extrausers"
 EXTRA_USERS_PARAMS = "usermod -P jumpnowtek root; "
 
 USER_CLASSES = "image-mklibs image-prelink"
-
 PATCHRESOLVE = "noop"
-
-INHERIT += "rm_work"
-
 RM_OLD_IMAGE = "1"
-
+INHERIT += "rm_work"
 CONF_VERSION = "1"
 
 # mender stuff
-MENDER_ARTIFACT_NAME = "wandq-1"
+MENDER_ARTIFACT_NAME = "wandq-t7"
 INHERIT += "mender-image mender-install mender-uboot"
 MENDER_SERVER_URL = "https://fractal.jumpnow"
 
