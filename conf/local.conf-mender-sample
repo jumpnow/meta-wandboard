@@ -42,9 +42,9 @@ INHERIT += "rm_work"
 CONF_VERSION = "1"
 
 # mender stuff
-MENDER_ARTIFACT_NAME = "wandq-t7"
+MENDER_ARTIFACT_NAME = "wandq-t1"
 INHERIT += "mender-image mender-install mender-uboot"
-MENDER_SERVER_URL = "https://fractal.jumpnow"
+MENDER_SERVER_URL = "https://<your-server>"
 
 MENDER_UBOOT_STORAGE_INTERFACE = "mmc"
 MENDER_UBOOT_STORAGE_DEVICE = "0"
