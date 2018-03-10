@@ -1,21 +1,19 @@
 #!/bin/sh
 #
-# An example Mender state script.
-#
-# Retain ssh server keys from the current root.
+# Retain ssh server keys from the current root
 # 
 
 echo "$(cat /etc/mender/artifact_info): Running $(basename "$0")" >&2
 
-if [ ! -d /data ]; then
-    exit 1 
+if [ ! -x /sbin/fw_printenv ]; then
+    exit 1
 fi
 
-current=$(mount | head -n 1 | awk '{ print $1; }')
+current=$(/sbin/fw_printenv mender_boot_part | awk -F = '{ print $2 }')
 
-if [ $current = "@@ROOTDEV@@p2" ]; then
+if [ $current = "2" ]; then
     newroot=@@ROOTDEV@@p3
-elif [ $current = "@@ROOTDEV@@p3" ]; then
+elif [ $current = "3" ]; then
     newroot=@@ROOTDEV@@p2
 else
     echo "Unexpected current root: $current" >&2
@@ -32,7 +30,7 @@ fi
 sleep 2
 
 if [ -d /mnt/etc/ssh ]; then
-    keys=$(ls -l /mnt/etc/ssh/*key* | wc -l)
+    keys=$(ls -l /mnt/etc/ssh/*key* 2>/dev/null | wc -l)
 
     if [ $keys -eq 0 ]; then
         cp /etc/ssh/*key* /mnt/etc/ssh
