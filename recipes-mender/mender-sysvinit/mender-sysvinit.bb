@@ -10,7 +10,7 @@ S = "${WORKDIR}"
 inherit update-rc.d
 
 INITSCRIPT_NAME = "mender.sh"
-INITSCRIPT_PARAMS = "start 35 5 .  stop 70 0 6 ."
+INITSCRIPT_PARAMS = "start 99 5 .  stop 10 0 6 ."
 
 do_install_append () {
     install -d ${D}${sysconfdir}/init.d
