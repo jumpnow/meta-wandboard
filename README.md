@@ -16,7 +16,6 @@ If using mender
 
     URI: git://github.com/mendersoftware/meta-mender
     branch: rocko
-    commit: b1962c3
-
+    commit: cb4feea
     
 meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
