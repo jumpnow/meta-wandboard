@@ -19,7 +19,8 @@ start_camera() {
     fi
 
     if [ -f /etc/syntro/syntrolcam.ini ]; then
-        cp /etc/syntro/syntrolcam.ini /run/syntro 
+        hostname=$(hostname)
+        sed -e "s:^appName=:appName=${hostname}:" /etc/syntro/syntrolcam.ini > /run/syntro/syntrolcam.ini
     fi
 
     cd /run/syntro
