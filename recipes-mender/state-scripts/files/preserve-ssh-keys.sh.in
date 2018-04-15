@@ -5,9 +5,7 @@
 
 echo "$(cat /etc/mender/artifact_info): Running $(basename "$0")" >&2
 
-if [ ! -x /sbin/fw_printenv ]; then
-    exit 1
-fi
+[ -x /sbin/fw_printenv ] || exit 1
 
 current=$(/sbin/fw_printenv mender_boot_part | awk -F = '{ print $2 }')
 
