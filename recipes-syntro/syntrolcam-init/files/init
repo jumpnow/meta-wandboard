@@ -1,0 +1,55 @@
+#!/bin/sh
+
+ARGS="-c -d -s/run/syntro/syntrolcam.ini"
+
+[ -e /dev/video0 ] || exit 0
+[ -x /usr/bin/SyntroLCam ] || exit 0
+
+[ -r /etc/default/syntrolcam ] && . /etc/default/syntrolcam
+
+case "$START_CAMERA" in
+        [Nn]*)
+                exit 0
+                ;;
+esac
+
+start_camera() {
+    if [ ! -d /run/syntro ]; then
+        mkdir /run/syntro
+    fi
+
+    if [ -f /etc/syntro/syntrolcam.ini ]; then
+        cp /etc/syntro/syntrolcam.ini /run/syntro 
+    fi
+
+    cd /run/syntro
+
+    echo "Starting SyntroLCam"
+    /usr/bin/SyntroLCam ${ARGS} 
+}
+
+stop_camera() {
+    echo "Stopping SyntroLCam"
+    killall SyntroLCam
+}
+
+case "$1" in
+    start)
+        start_camera
+        ;;
+
+    stop)
+        stop_camera
+        ;;
+
+    restart)
+        stop_camera
+        sleep 3
+        start_camera
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 2
+esac
+
