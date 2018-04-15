@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMG=mender-test
+IMG=mender-syntro
 
 if [ -z ${TOPDIR} ]; then
     cd ../..
