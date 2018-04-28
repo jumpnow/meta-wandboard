@@ -39,11 +39,6 @@ else
     SRC=${OETMP}/deploy/images/${MACHINE}
 fi 
 
-if [ ! -d /media/card ]; then
-    echo "Temporary mount point [/media/card] not found"
-    exit 1
-fi
-
 if [ ! -f ${SRC}/SPL-${MACHINE} ]; then
     echo "File not found: ${SRC}/SPL-${MACHINE}"
     exit 1
