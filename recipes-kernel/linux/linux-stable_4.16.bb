@@ -7,9 +7,12 @@ RDEPENDS_kernel-base += "kernel-devicetree"
 KERNEL_DEVICETREE ?= " \
     imx6q-wandboard.dtb \
     imx6q-wandboard-revb1.dtb \
+    imx6q-wandboard-revd1.dtb \
+    imx6qp-wandboard-revd1.dtb \
     imx6dl-wandboard.dtb \
     imx6dl-wandboard-revb1.dtb \
- "
+    imx6dl-wandboard-revd1.dtb \
+"
 
 LINUX_VERSION = "4.16"
 LINUX_VERSION_EXTENSION = "-jumpnow"
