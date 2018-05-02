@@ -13,7 +13,7 @@ PV = "2018.05"
 
 # FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot-${PV}:"
 
-SRCREV = "ec5c4a8fd64a178a4d159917cda0aa176e5a9be5"
+SRCREV = "ec1754f091c3c06d76592a3f9fecf6184f27e4c9"
 SRC_URI = " \
     git://git.denx.de/u-boot.git;branch=master;protocol=git \
 "
