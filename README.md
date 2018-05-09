@@ -2,7 +2,7 @@ This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
     branch: rocko
-    commit: fdeecc9
+    commit: 9915e07
 
     URI: git://git.openembedded.org/meta-openembedded
     branch: rocko
@@ -10,12 +10,12 @@ This layer depends on:
 
     URI: https://github.com/meta-qt5/meta-qt5.git
     branch: rocko
-    commit: bf68f8b
+    commit: cfe02f2
 
 If using mender
 
     URI: git://github.com/mendersoftware/meta-mender
     branch: rocko
-    commit: cb4feea
+    commit: 6a1fb3d
     
 meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
