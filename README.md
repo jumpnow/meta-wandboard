@@ -10,12 +10,12 @@ This layer depends on:
 
     URI: https://github.com/meta-qt5/meta-qt5.git
     branch: rocko
-    commit: cfe02f2
+    commit: fe6dbe1
 
 If using mender
 
     URI: git://github.com/mendersoftware/meta-mender
     branch: rocko
-    commit: 6a1fb3d
+    commit: 3ba125c
     
 meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
