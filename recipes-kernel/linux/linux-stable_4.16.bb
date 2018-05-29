@@ -2,8 +2,6 @@ require recipes-kernel/linux/linux-yocto.inc
 
 COMPATIBLE_MACHINE = "wandboard"
 
-RDEPENDS_kernel-base += "kernel-devicetree"
-
 KERNEL_DEVICETREE ?= " \
     imx6q-wandboard.dtb \
     imx6q-wandboard-revb1.dtb \
