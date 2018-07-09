@@ -1,6 +1,4 @@
-require recipes-kernel/linux/linux-yocto.inc
-
-LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
+require linux-stable.inc
 
 COMPATIBLE_MACHINE = "wandboard"
 
@@ -21,8 +19,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/linux-stable-${LINUX_VERSION}:"
 
 S = "${WORKDIR}/git"
 
-PV = "4.17.4"
-SRCREV = "bdeb8f5efe9013844a20585b6a86ceff672d9d33"
+PV = "4.17.5"
+SRCREV = "c97bfb7e6e7955dbd6c9b6bff6db2b24c0a3e15e"
 SRC_URI = " \
     git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;branch=linux-${LINUX_VERSION}.y \
     file://defconfig \
