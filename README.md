@@ -2,7 +2,7 @@ This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
     branch: sumo
-    commit: 24a833f
+    commit: 5b5ebab
 
     URI: git://git.openembedded.org/meta-openembedded
     branch: sumo
@@ -10,6 +10,6 @@ This layer depends on:
 
     URI: https://github.com/meta-qt5/meta-qt5.git
     branch: sumo
-    commit: 4b96f70
+    commit: c429ced
 
 meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
