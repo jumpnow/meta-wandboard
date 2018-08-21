@@ -2,7 +2,7 @@ This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
     branch: sumo
-    commit: 5b5ebab
+    commit: bb91b2a
 
     URI: git://git.openembedded.org/meta-openembedded
     branch: sumo
