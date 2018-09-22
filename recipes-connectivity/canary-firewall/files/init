@@ -1,0 +1,46 @@
+#!/bin/sh
+
+RULES=/etc/firewall.rules
+
+if [ ! -f $RULES ]; then
+    exit 0
+fi
+
+start_fw()
+{
+    grep -q 'ALLOWED_HOST\|DNS_SERVER\|DHCP_SERVER' $RULES
+
+    if [ $? -eq 0 ]; then
+        echo "Firewall rules not configured"
+        exit 0 
+    fi
+
+    echo "Starting firewall"
+    iptables-restore < /etc/firewall.rules
+}
+
+case "$1" in
+    start)
+        start_fw
+        ;;
+
+    stop)
+        echo "Stopping firewall"
+        iptables -F
+        iptables -P INPUT ACCEPT
+        iptables -P FORWARD DROP
+        ;;
+
+    restart)
+        echo "Restarting firewall"
+        iptables -F
+        iptables-restore < /etc/firewall.rules
+        ;;
+
+    *)
+        echo "Usage: firewall { start | stop | restart }"
+        ;;
+esac
+
+exit 0
+
