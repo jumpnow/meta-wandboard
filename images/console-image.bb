@@ -35,9 +35,11 @@ DEV_SDK_INSTALL = " \
     cpp \
     cpp-symlinks \
     diffutils \
+    elfutils \
     file \
     gcc \
     gcc-symlinks \
+    gdb \
     g++ \
     g++-symlinks \
     gettext \
@@ -46,9 +48,14 @@ DEV_SDK_INSTALL = " \
     libstdc++ \
     libstdc++-dev \
     libtool \
+    ltrace \
     make \
+    nasm \
+    perl-modules \
     pkgconfig \
+    python-modules \
     python3-modules \
+    strace \
 "
 
 DEV_EXTRAS = " \
@@ -59,6 +66,9 @@ DEV_EXTRAS = " \
 
 EXTRA_TOOLS_INSTALL = " \
     bzip2 \
+    curl \
+    dosfstools \
+    e2fsprogs-mke2fs \
     ethtool \
     fbset \
     findutils \
@@ -67,14 +77,14 @@ EXTRA_TOOLS_INSTALL = " \
     iproute2 \
     iptables \
     less \
-    memtester \
-    nano \
     netcat \
+    parted \
     procps \
-    rsync \
+    root-upgrader \
     sysfsutils \
     tcpdump \
     util-linux \
+    util-linux-blkid \
     unzip \
     wget \
     zip \
@@ -91,7 +101,7 @@ IMAGE_INSTALL += " \
 
 IMAGE_FILE_BLACKLIST += " \
     /etc/init.d/hwclock.sh \
- "
+"
 
 remove_blacklist_files() {
     for i in ${IMAGE_FILE_BLACKLIST}; do
@@ -107,10 +117,15 @@ disable_bootlogd() {
     echo BOOTLOGD_ENABLE=no > ${IMAGE_ROOTFS}/etc/default/bootlogd
 }
 
+create_opt_dir() {
+    mkdir -p ${IMAGE_ROOTFS}/opt
+}
+
 ROOTFS_POSTPROCESS_COMMAND += " \
     remove_blacklist_files ; \
     set_local_timezone ; \
     disable_bootlogd ; \
- "
+    create_opt_dir ; \
+"
 
 export IMAGE_BASENAME = "console-image"
