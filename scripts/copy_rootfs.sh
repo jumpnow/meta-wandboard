@@ -59,7 +59,7 @@ else
 fi
 
 echo "Formatting $DEV as ext4"
-sudo mkfs.ext4 -L ROOT $DEV
+sudo mkfs.ext4 $DEV
 
 echo "Mounting $DEV"
 sudo mount $DEV /media/card
@@ -83,6 +83,18 @@ fi
 
 echo "Unmounting $DEV"
 sudo umount $DEV
+
+if [ -b "/dev/${1}3" ]; then
+    DEV=/dev/${1}3
+    echo "Formatting flags partition as FAT: ${DEV}"
+    sudo mkfs.vfat ${DEV}
+fi
+
+if [ -b "/dev/${1}4" ]; then
+    DEV=/dev/${1}4
+    echo "Formatting opt partition as ext4: ${DEV}"
+    sudo mkfs.ext4 -q -F ${DEV}
+fi
 
 echo "Done"
 
