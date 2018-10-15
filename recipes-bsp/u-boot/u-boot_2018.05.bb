@@ -11,11 +11,12 @@ UBOOT_LOCALVERSION = "-jumpnow"
 
 PV = "2018.05"
 
-# FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot-${PV}:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot-${PV}:"
 
 SRCREV = "ec1754f091c3c06d76592a3f9fecf6184f27e4c9"
 SRC_URI = " \
     git://git.denx.de/u-boot.git;branch=master;protocol=git \
+    file://0001-Add-FAT-write-support.patch \
 "
 
 S = "${WORKDIR}/git"
