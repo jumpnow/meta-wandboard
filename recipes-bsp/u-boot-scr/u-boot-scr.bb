@@ -5,10 +5,16 @@ COMPATIBLE_MACHINE = "wandboard"
 
 DEPENDS = "u-boot-mkimage-native"
 
-SRC_URI = "file://boot.cmd"
+SRC_URI = "file://boot.cmd \
+           file://upgrader-boot.cmd \
+          "
 
 do_compile() {
-    mkimage -A arm -T script -C none -n "Boot script" -d "${WORKDIR}/boot.cmd" boot.scr
+    if [ -n "${SD_UPGRADER_BOOT}" ]; then
+        mkimage -A arm -T script -C none -n "Boot script" -d "${WORKDIR}/upgrader-boot.cmd" boot.scr
+    else
+        mkimage -A arm -T script -C none -n "Boot script" -d "${WORKDIR}/boot.cmd" boot.scr
+    fi
 }
 
 do_install() {
