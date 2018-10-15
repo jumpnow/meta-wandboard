@@ -19,6 +19,9 @@ PREFERRED_PROVIDER_udev = "eudev"
 
 MACHINE = "wandboard"
 
+# add root upgrader script into u-boot boot.scr
+# SD_UPGRADER_BOOT = "1"
+
 #DL_DIR = "${HOME}/oe-sources"
 #SSTATE_DIR = "/oe6/wand/sstate-cache"
 #TMPDIR = "/oe6/wand/tmp-sumo"
