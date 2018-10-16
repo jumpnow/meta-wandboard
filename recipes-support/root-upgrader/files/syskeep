@@ -4,6 +4,8 @@
 # 
 
 root_dev=/dev/mmcblk2
+rootfs_one_part=${root_dev}p1
+rootfs_two_part=${root_dev}p2
 flags_part=${root_dev}p3
 
 mnt_root=/mnt
@@ -19,20 +21,20 @@ if [ "${QUIET}" == "no" ]; then
     echo -e -n "Finding the current root partition : "
 fi
 
-cat /proc/cmdline | grep -q ${root_dev}p1
+cat /proc/cmdline | grep -q ${rootfs_one_part}
 
 if [ $? -eq 0 ]; then
-    current_root=${root_dev}p1
+    current_root=${rootfs_one_part}
 else
-    cat /proc/cmdline | grep -q ${root_dev}p2
+    cat /proc/cmdline | grep -q ${rootfs_two_part}
 
     if [ $? -eq 0 ]; then
-        current_root=${root_dev}p2
+        current_root=${rootfs_two_part}
     else
         if [ "${QUIET}" == "no" ]; then
             echo "fail"
         fi
-        echo "Current root device is not ${root_dev}p1 or ${root_dev}p2"
+        echo "Current root device is not ${rootfs_one_part} or ${rootfs_two_part}"
         exit 1
     fi
 fi
@@ -145,7 +147,7 @@ fi
 
 need_updates=0
 
-if [ "${current_root}" = "${root_dev}p1" ]; then
+if [ "${current_root}" = "${rootfs_one_part}" ]; then
     if [ ! -e ${flags_mnt}/one ]; then
         need_updates=1
     fi
@@ -228,7 +230,7 @@ if [ "${QUIET}" == "no" ]; then
     echo -e -n "Updating flags partition : "
 fi
 
-if [ "${current_root}" = "${root_dev}p1" ]; then
+if [ "${current_root}" = "${rootfs_one_part}" ]; then
     if [ ! -e ${flags_mnt}/one ]; then
         touch ${flags_mnt}/one
     fi

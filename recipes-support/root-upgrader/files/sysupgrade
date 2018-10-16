@@ -4,6 +4,8 @@
 # 
 
 root_dev=/dev/mmcblk2
+rootfs_one_part=${root_dev}p1
+rootfs_two_part=${root_dev}p2
 flags_part=${root_dev}p3
 
 mnt_root=/mnt
@@ -30,20 +32,20 @@ prompt_to_continue()
 
 echo -e -n "Finding the current root partition : "
 
-cat /proc/cmdline | grep -q ${root_dev}p1
+cat /proc/cmdline | grep -q ${rootfs_one_part}
 
 if [ $? -eq 0 ]; then
-    current_root=${root_dev}p1
-    upgrade_root=${root_dev}p2
+    current_root=${rootfs_one_part}
+    upgrade_root=${rootfs_two_part}
 else
-    cat /proc/cmdline | grep -q ${root_dev}p2
+    cat /proc/cmdline | grep -q ${rootfs_two_part}
 
     if [ $? -eq 0 ]; then
-        current_root=${root_dev}p2
-        upgrade_root=${root_dev}p1
+        current_root=${rootfs_two_part}
+        upgrade_root=${rootfs_one_part}
     else
         echo "fail"
-        echo "Current root device is not ${root_dev}p1 or ${root_dev}p2"
+        echo "Current root device is not ${rootfs_one_part} or ${rootfs_two_part}"
         exit 1
     fi
 fi
@@ -231,7 +233,7 @@ echo "ok"
 
 echo -e -n "Updating flags partition : "
 
-if [ "${upgrade_root}" = "${root_dev}p1" ]; then
+if [ "${upgrade_root}" = "${rootfs_one_part}" ]; then
     rm -rf ${flags_mnt}/one*
     touch ${flags_mnt}/one
     sync
