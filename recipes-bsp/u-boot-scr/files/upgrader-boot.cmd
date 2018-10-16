@@ -6,7 +6,7 @@ setenv mmcrootfstype ext4 rootwait
 if test -e mmc ${flagpart} two; then
     if test -e mmc ${flagpart} two_ok; then
         setenv bootpart 0:2
-        setenv mmcroot /dev/mmcblk1p2 ro
+        setenv mmcroot /dev/mmcblk2p2 ro
     elif test ! -e mmc ${flagpart} two_tried; then
         fatwrite mmc ${flagpart} ${loadaddr} two_tried 4;
         setenv bootpart 0:2
