@@ -2,7 +2,7 @@
 #
 # Update flags partition to mark the currently non-active root as
 # the new active partition.
-# 
+#
 
 root_dev=/dev/mmcblk2
 rootfs_one_part=${root_dev}p1
@@ -37,7 +37,7 @@ echo "${current_root}"
 
 echo -e -n "Checking that ${mnt_root} is not in use : "
 
-mount | grep -q ${mnt_root} 
+mount | grep -q ${mnt_root}
 
 if [ $? -eq 0 ]; then
     echo "fail"
@@ -49,7 +49,7 @@ echo "ok"
 
 echo -e -n "Checking for a ${flags_part} partition : "
 
-fdisk -l ${root_dev} | grep -q ${flags_part} 
+fdisk -l ${root_dev} | grep -q ${flags_part}
 
 if [ $? -eq 1 ]; then
     echo "fail"
@@ -61,7 +61,7 @@ echo "ok"
 
 echo -e -n "Checking that ${flags_part} is not in use : "
 
-mount | grep -q ${flags_part} 
+mount | grep -q ${flags_part}
 
 if [ $? -eq 0 ]; then
     echo "fail"
@@ -149,7 +149,7 @@ fi
 
 echo -e -n "Mounting ${flags_part} read-write on ${flags_mnt} : "
 
-mount -t vfat ${flags_part} ${flags_mnt} 
+mount -t vfat ${flags_part} ${flags_mnt}
 
 if [ $? -ne 0 ]; then
     echo "fail"
@@ -195,7 +195,7 @@ echo "ok"
 
 echo -e -n "Unmounting ${flags_part} : "
 
-umount ${flags_part} 
+umount ${flags_part}
 
 if [ $? -ne 0 ]; then
     echo "fail"
