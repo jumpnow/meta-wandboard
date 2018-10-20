@@ -229,4 +229,4 @@ fi
 
 echo "ok"
 
-echo "New root partition will be ${upgrade_root}"
+echo "Reboot to use the new system"
