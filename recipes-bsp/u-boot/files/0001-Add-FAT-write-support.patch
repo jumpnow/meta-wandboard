@@ -1,6 +1,6 @@
-From 60854b0d720ea0ba83690fe932fb2b224129d97e Mon Sep 17 00:00:00 2001
+From 5788c276940071f04404a2eaed1d175b0e902ab2 Mon Sep 17 00:00:00 2001
 From: Scott Ellis <scott@jumpnowtek.com>
-Date: Sun, 14 Oct 2018 10:44:06 -0400
+Date: Mon, 29 Oct 2018 11:52:43 -0400
 Subject: [PATCH] Add FAT write support
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Add FAT write support
  1 file changed, 2 insertions(+)
 
 diff --git a/configs/wandboard_defconfig b/configs/wandboard_defconfig
-index 0333529..4dace43 100644
+index a01ea52..e04aff3 100644
 --- a/configs/wandboard_defconfig
 +++ b/configs/wandboard_defconfig
 @@ -42,3 +42,5 @@ CONFIG_USB_STORAGE=y

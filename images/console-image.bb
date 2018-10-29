@@ -5,10 +5,11 @@ LICENSE = "MIT"
 IMAGE_FEATURES += "package-management"
 IMAGE_LINGUAS = "en-us"
 
-inherit core-image
+inherit image
 
 CORE_OS = " \
     openssh openssh-keygen openssh-sftp-server \
+    packagegroup-core-boot \
     term-prompt \
     tzdata \
     u-boot-scr \
@@ -24,7 +25,6 @@ WIFI_SUPPORT = " \
     crda \
     iw \
     rfkill \
-    wireless-tools \
     wpa-supplicant \
 "
 

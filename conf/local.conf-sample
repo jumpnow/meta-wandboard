@@ -1,8 +1,6 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 2.5 Poky distribution [sumo] branch
+# Yocto Project 2.6 Poky distribution [thud] branch
 # This is a sysvinit system
-
-BBMASK = "meta-wandboard/recipes-mender"
 
 LICENSE_FLAGS_WHITELIST = "commercial"
 
@@ -14,17 +12,11 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
 PREFERRED_PROVIDER_udev = "eudev"
 
-# default kernel is 4.19
-#PREFERRED_VERSION_linux-stable = "4.14.%"
-
 MACHINE = "wandboard"
 
-# add root upgrader script into u-boot boot.scr
-# SD_UPGRADER_BOOT = "1"
-
-#DL_DIR = "${HOME}/oe-sources"
-#SSTATE_DIR = "/oe6/wand/sstate-cache"
-#TMPDIR = "/oe6/wand/tmp-sumo"
+# DL_DIR = "${HOME}/oe-sources"
+# SSTATE_DIR = "/oe6/wand/sstate-cache"
+# TMPDIR = "/oe6/wand/tmp-thud"
 
 DISTRO = "poky"
 
@@ -33,6 +25,8 @@ PACKAGE_CLASSES = "package_ipk"
 # i686 or x86_64
 SDKMACHINE = "x86_64"
 
+SD_UPGRADER_BOOT = "1"
+
 # no root password
 # EXTRA_IMAGE_FEATURES = "debug-tweaks"
 
@@ -40,6 +34,7 @@ SDKMACHINE = "x86_64"
 INHERIT += "extrausers"
 EXTRA_USERS_PARAMS = "usermod -P jumpnowtek root; "
 
+# force password change on first login
 INHERIT += "chageusers"
 CHAGE_USERS_PARAMS = "chage -d0 root; "
 
