@@ -78,6 +78,7 @@ EXTRA_TOOLS_INSTALL = " \
     iptables \
     less \
     netcat \
+    nmap \
     parted \
     procps \
     rndaddtoentcnt \
