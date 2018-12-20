@@ -33,7 +33,7 @@ DEV_SDK_INSTALL = " \
     cpp \
     cpp-symlinks \
     diffutils \
-    elfutils \
+    elfutils elfutils-binutils \
     file \
     gcc \
     gcc-symlinks \
