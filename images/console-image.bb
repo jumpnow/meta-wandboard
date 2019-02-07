@@ -70,6 +70,7 @@ EXTRA_TOOLS_INSTALL = " \
     iproute2 \
     iptables \
     less \
+    lsof \
     netcat-openbsd \
     nmap \
     ntp ntp-tickadj \
