@@ -66,6 +66,7 @@ EXTRA_TOOLS_INSTALL = " \
     firewall \
     grep \
     i2c-tools \
+    ifupdown \
     iperf3 \
     iproute2 \
     iptables \
