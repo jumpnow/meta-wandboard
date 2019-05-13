@@ -18,6 +18,7 @@ KERNEL_EXTRA_INSTALL = " \
 "
 
 WIREGUARD = " \
+    wireguard-init \
     wireguard-module \
     wireguard-tools \
 "
