@@ -95,15 +95,21 @@ if [ -f /etc/network/interfaces ]; then
 fi
 
 if [ -d /etc/wireguard ]; then
-    echo "  Copying /etc/wireguard files"
 
-    mkdir -p ${upgrade_mnt}/etc/wireguard
+    count=$(ls /etc/wireguard | wc -l)
 
-    cp --preserve=mode,ownership /etc/wireguard/* ${upgrade_mnt}/etc/wireguard
+    if [ "$count" -gt 0 ]; then
 
-    if [ $? -ne 0 ]; then
-        echo "Error copying /etc/wireguard files"
-        exit 1
+        echo "  Copying /etc/wireguard files"
+
+        mkdir -p ${upgrade_mnt}/etc/wireguard
+
+        cp --preserve=mode,ownership /etc/wireguard/* ${upgrade_mnt}/etc/wireguard
+
+        if [ $? -ne 0 ]; then
+            echo "Error copying /etc/wireguard files"
+            exit 1
+        fi
     fi
 fi
 
