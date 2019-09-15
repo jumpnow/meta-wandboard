@@ -78,6 +78,7 @@ EXTRA_TOOLS_INSTALL = " \
     iptables \
     less \
     lsof \
+    minicom \
     netcat-openbsd \
     nmap \
     ntp ntp-tickadj \
@@ -86,6 +87,7 @@ EXTRA_TOOLS_INSTALL = " \
     rndaddtoentcnt \
     rng-tools \
     root-upgrader \
+    screen \
     sysfsutils \
     tcpdump \
     util-linux \
