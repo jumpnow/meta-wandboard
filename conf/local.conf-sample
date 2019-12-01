@@ -15,7 +15,7 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
 PREFERRED_PROVIDER_udev = "eudev"
 
-# default is 5.0
+# default is 5.4
 # PREFERRED_VERSION_linux-stable = "4.19.%"
 
 MACHINE = "wandboard"
