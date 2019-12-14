@@ -6,14 +6,13 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
-  ${HOME}/poky-warrior/meta \
-  ${HOME}/poky-warrior/meta-poky \
-  ${HOME}/poky-warrior/meta-openembedded/meta-oe \
-  ${HOME}/poky-warrior/meta-openembedded/meta-networking \
-  ${HOME}/poky-warrior/meta-openembedded/meta-perl \
-  ${HOME}/poky-warrior/meta-openembedded/meta-python \
-  ${HOME}/poky-warrior/meta-security \
-  ${HOME}/poky-warrior/meta-security/meta-security-compliance \
-  ${HOME}/poky-warrior/meta-qt5 \
+  ${HOME}/poky-zeus/meta \
+  ${HOME}/poky-zeus/meta-poky \
+  ${HOME}/poky-zeus/meta-openembedded/meta-oe \
+  ${HOME}/poky-zeus/meta-openembedded/meta-networking \
+  ${HOME}/poky-zeus/meta-openembedded/meta-perl \
+  ${HOME}/poky-zeus/meta-openembedded/meta-python \
+  ${HOME}/poky-zeus/meta-security \
+  ${HOME}/poky-zeus/meta-jumpnow \
   ${HOME}/wandboard/meta-wandboard \
 "
