@@ -14,7 +14,7 @@ This layer depends on:
 
 Latest commits:
 
-    poky 73fe0e273b
+    poky fe857e4179
     meta-openembedded e855ecc6d
     meta-security ecd8c30
     meta-jumpnow 6869932
