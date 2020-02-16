@@ -2,7 +2,8 @@
 # Yocto Project 3.0 Poky distribution [zeus] branch
 # This is a sysvinit system
 
-# mask wireguard from meta-openembedded 
+# mask wireguard from meta-openembedded/meta-networking
+# use version in meta-jumpnow with more recent wireguard version
 BBMASK = "meta-networking/recipes-kernel/wireguard"
 
 LICENSE_FLAGS_WHITELIST = "commercial"
@@ -14,13 +15,13 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 PREFERRED_PROVIDER_udev = "eudev"
 
 # default is 5.4
-# PREFERRED_VERSION_linux-stable = "4.19.%"
+#PREFERRED_VERSION_linux-stable = "4.19.%"
 
 MACHINE = "wandboard"
 
-#DL_DIR = "${HOME}/oe-sources"
-#SSTATE_DIR = "/oe7/wand/sstate-cache"
-#TMPDIR = "/oe7/wand/tmp-zeus"
+#DL_DIR = "/src/oe"
+#SSTATE_DIR = "/oe5/wand/sstate-cache"
+#TMPDIR = "/oe5/wand/tmp-zeus"
 
 DISTRO = "poky"
 
