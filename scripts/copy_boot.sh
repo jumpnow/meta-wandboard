@@ -7,6 +7,15 @@ if [ "x${1}" = "x" ]; then
     exit 0
 fi
 
+mount | grep -q ${1}
+
+if [ $? -ne 1 ]; then
+    echo "Looks like partitions on device /dev/${1} are mounted"
+    echo "Not going to work on a device that is currently in use"
+    mount | grep ${1}
+    exit 1
+fi
+
 if [ -b ${1} ]; then
     DEV=${1}
 elif [ -b "/dev/${1}" ]; then
