@@ -54,7 +54,7 @@ echo ""
 echo "Current root: ${current_root}"
 echo "Upgrade root: ${upgrade_root}"
 
-prompt_to_continue ${upgrade_root}
+# prompt_to_continue ${upgrade_root}
 
 echo -e -n "Checking that ${mnt_root} is not in use : "
 
