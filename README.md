@@ -17,6 +17,6 @@ Latest commits:
     poky febbe2944c
     meta-openembedded cc155826b
     meta-security d83f7cb
-    meta-jumpnow 9f716c8
+    meta-jumpnow afa9b50
 
 meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
