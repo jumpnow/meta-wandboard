@@ -35,18 +35,22 @@ fi
 echo "MACHINE: $MACHINE"
 
 if [ -z "$OETMP" ]; then
-    echo "Working from local directory"
-    SRC=.
+    if [[ ! -z "$BBPATH" ]]; then
+	echo "using BBPATH: $BBPATH"
+	SRC=${BBPATH}/tmp/deploy/images/${MACHINE}
+    else
+	echo "Working from local directory"
+	SRC=.
+    fi
 else
     echo "OETMP: $OETMP"
-
-    if [ ! -d ${OETMP}/deploy/images/${MACHINE} ]; then
-        echo "Directory not found: ${OETMP}/deploy/images/${MACHINE}"
-        exit 1
-    fi
-
     SRC=${OETMP}/deploy/images/${MACHINE}
 fi 
+
+if [ ! -d ${SRC} ]; then
+    echo "Directory not found: ${SRC}"
+    exit 1
+fi
 
 if [ ! -f ${SRC}/SPL-${MACHINE} ]; then
     echo "File not found: ${SRC}/SPL-${MACHINE}"
