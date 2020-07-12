@@ -1,4 +1,4 @@
-From 8e217298f7fda5d29d599cfe19393312f0dcc5b7 Mon Sep 17 00:00:00 2001
+From 18df817c188bcd850067244ae761106a158ab138 Mon Sep 17 00:00:00 2001
 From: Scott Ellis <scott@jumpnowtek.com>
 Date: Sat, 14 Dec 2019 07:09:49 -0500
 Subject: [PATCH] Add FAT write support
@@ -8,11 +8,11 @@ Subject: [PATCH] Add FAT write support
  1 file changed, 1 insertion(+)
 
 diff --git a/configs/wandboard_defconfig b/configs/wandboard_defconfig
-index ca564c59b8..86f6aa70c7 100644
+index 733b4e82ed..5f1fb75ebc 100644
 --- a/configs/wandboard_defconfig
 +++ b/configs/wandboard_defconfig
 @@ -75,3 +75,4 @@ CONFIG_DM_VIDEO=y
- CONFIG_VIDEO_BPP16=y
+ # CONFIG_VIDEO_BPP32 is not set
  CONFIG_SYS_WHITE_ON_BLACK=y
  CONFIG_VIDEO_IPUV3=y
 +CONFIG_FAT_WRITE=y
