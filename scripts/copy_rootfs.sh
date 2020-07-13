@@ -23,18 +23,24 @@ else
 fi
 
 if [ -z "$OETMP" ]; then
-    echo -e "Working from local directory"
-    SRC=.
-else
-    echo "OETMP: $OETMP"
+    # echo try to find it
+    if [ -f ../../build/conf/local.conf ]; then
+        OETMP=$(grep '^TMPDIR' ../../build/conf/local.conf | awk '{ print $3 }' | sed 's/"//g')
 
-    if [ ! -d ${OETMP}/deploy/images/${MACHINE} ]; then
-        echo "Directory not found: ${OETMP}/deploy/images/${MACHINE}"
-        exit 1
+        if [ -z "$OETMP" ]; then
+            OETMP=../../build/tmp
+        fi
     fi
+fi
 
-    SRC=${OETMP}/deploy/images/${MACHINE}
-fi 
+echo "OETMP: $OETMP"
+
+if [ ! -d ${OETMP}/deploy/images/${MACHINE} ]; then
+    echo "Directory not found: ${OETMP}/deploy/images/${MACHINE}"
+    exit 1
+fi
+
+SRC=${OETMP}/deploy/images/${MACHINE}
 
 if [ ! -d /media/card ]; then
     echo "Temporary mount point [/media/card] not found"
