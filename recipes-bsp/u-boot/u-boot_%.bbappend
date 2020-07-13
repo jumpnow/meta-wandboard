@@ -1,6 +1,9 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://0001-Add-FAT-write-support.patch"
+SRC_URI = "\
+    git://git.denx.de/u-boot.git \
+    file://0001-Add-FAT-write-support.patch \
+"
 
 # v2020.07
 PV="2020.07"
