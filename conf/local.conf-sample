@@ -20,7 +20,7 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
 PREFERRED_PROVIDER_udev = "eudev"
 
-# default version is 5.6, uncomment to change
+# default version is 5.8, uncomment to change
 #PREFERRED_VERSION_linux-stable = "5.4.%"
 
 # uncomment for kernels < 5.6
