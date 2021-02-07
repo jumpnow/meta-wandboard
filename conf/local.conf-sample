@@ -1,5 +1,5 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 3.1 Poky distribution [dunfell] branch
+# Yocto Project 3.2 Poky distribution [gatesgarth] branch
 # This is a sysvinit system
 
 # mask wireguard from meta-openembedded/meta-networking
@@ -13,14 +13,11 @@ DISTRO_FEATURES = "ext2 usbhost ${DISTRO_FEATURES_LIBC}"
 
 DISTRO_FEATURES_remove = "ptest"
 
-# remove pulseaudio
-DISTRO_FEATURES_BACKFILL_CONSIDERED += "pulseaudio"
-
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
 PREFERRED_PROVIDER_udev = "eudev"
 
-# default version is 5.8, uncomment to change
+# default version is 5.10, uncomment to change
 #PREFERRED_VERSION_linux-stable = "5.4.%"
 
 # uncomment for kernels < 5.6
@@ -30,7 +27,7 @@ MACHINE = "wandboard"
 
 # DL_DIR = "/src/oe"
 # SSTATE_DIR = "/oe9/wand/sstate-cache"
-# TMPDIR = "/oe9/wand/tmp-dunfell"
+# TMPDIR = "/oe9/wand/tmp-gatesgarth"
 
 DISTRO = "poky"
 
