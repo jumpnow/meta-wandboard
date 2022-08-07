@@ -1,22 +1,18 @@
 This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
-    branch: gatesgarth
+    branch: kirkstone
 
     URI: git://git.openembedded.org/meta-openembedded
-    branch: gatesgarth
+    branch: kirkstone
 
     URI: git://git.yoctoproject.org/meta-security.git
-    branch: gatesgarth
-
-    URI: https://github.com/jumpnow/meta-jumpnow.git
-    branch: gatesgarth
+    branch: kirkstone
 
 Latest commits:
 
-    poky 0298de9a8a
-    meta-openembedded 945f062ff
-    meta-security 4583ab9
-    meta-jumpnow 3dd7b9a
+    poky 602922d492
+    meta-openembedded 8f2dc1023
+    meta-security c79262a
 
 meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>

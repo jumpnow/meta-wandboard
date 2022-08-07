@@ -6,13 +6,12 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
-  ${HOME}/poky-gatesgarth/meta \
-  ${HOME}/poky-gatesgarth/meta-poky \
-  ${HOME}/poky-gatesgarth/meta-openembedded/meta-oe \
-  ${HOME}/poky-gatesgarth/meta-openembedded/meta-networking \
-  ${HOME}/poky-gatesgarth/meta-openembedded/meta-perl \
-  ${HOME}/poky-gatesgarth/meta-openembedded/meta-python \
-  ${HOME}/poky-gatesgarth/meta-security \
-  ${HOME}/poky-gatesgarth/meta-jumpnow \
+  ${HOME}/poky-kirkstone/meta \
+  ${HOME}/poky-kirkstone/meta-poky \
+  ${HOME}/poky-kirkstone/meta-openembedded/meta-oe \
+  ${HOME}/poky-kirkstone/meta-openembedded/meta-networking \
+  ${HOME}/poky-kirkstone/meta-openembedded/meta-perl \
+  ${HOME}/poky-kirkstone/meta-openembedded/meta-python \
+  ${HOME}/poky-kirkstone/meta-security \
   ${HOME}/wandboard/meta-wandboard \
 "

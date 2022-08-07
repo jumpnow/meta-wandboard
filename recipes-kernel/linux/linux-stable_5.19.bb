@@ -7,24 +7,18 @@ KERNEL_CONFIG_COMMAND = "oe_runmake_call -C ${S} CC="${KERNEL_CC}" O=${B} olddef
 COMPATIBLE_MACHINE = "wandboard"
 
 KERNEL_DEVICETREE ?= " \
-    imx6q-wandboard.dtb \
-    imx6q-wandboard-revb1.dtb \
-    imx6q-wandboard-revd1.dtb \
-    imx6qp-wandboard-revd1.dtb \
-    imx6dl-wandboard.dtb \
     imx6dl-wandboard-revb1.dtb \
-    imx6dl-wandboard-revd1.dtb \
+    imx6q-wandboard-revb1.dtb \
 "
 
-LINUX_VERSION = "5.10"
-LINUX_VERSION_EXTENSION = "-jumpnow"
+LINUX_VERSION = "5.19"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/linux-stable-${LINUX_VERSION}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/linux-stable-${LINUX_VERSION}:"
 
 S = "${WORKDIR}/git"
 
-PV = "5.10.19"
-SRCREV = "7b43ec8a0cc6fefdd63a1443edef0d2693ff99a2"
+PV = "5.19.0"
+SRCREV = "3d7cb6b04c3f3115719235cc6866b10326de34cd"
 SRC_URI = " \
     git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;branch=linux-${LINUX_VERSION}.y \
     file://defconfig \
