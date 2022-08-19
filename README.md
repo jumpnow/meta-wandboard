@@ -11,8 +11,8 @@ This layer depends on:
 
 Latest commits:
 
-    poky 602922d492
-    meta-openembedded 8f2dc1023
+    poky 387ab5f18b
+    meta-openembedded acbe74879
     meta-security c79262a
 
 meta-wandboard layer maintainer: Scott Ellis <scott@jumpnowtek.com>
