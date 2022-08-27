@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mnt=/mnt
+
 MACHINE=wandboard
 
 if [ "x${1}" = "x" ]; then
@@ -42,11 +44,6 @@ fi
 
 SRC=${OETMP}/deploy/images/${MACHINE}
 
-if [ ! -d /media/card ]; then
-    echo "Temporary mount point [/media/card] not found"
-    exit 1
-fi
-
 echo "IMAGE: $IMAGE"
 
 if [ "x${3}" = "x" ]; then
@@ -63,58 +60,37 @@ if [ ! -f "${SRC}/${IMAGE}-image-${MACHINE}.tar.xz" ]; then
 fi
 
 if [ -b ${1} ]; then
-    DEV=${1}
+    dev=${1}
 elif [ -b "/dev/${1}1" ]; then
-    DEV=/dev/${1}1
+    dev=/dev/${1}1
 elif [ -b "/dev/${1}p1" ]; then
-    DEV=/dev/${1}p1
+    dev=/dev/${1}p1
 else
     echo "Block device not found: /dev/${1}1 or /dev/${1}p1"
     exit 1
 fi
 
-echo "Formatting $DEV as ext4"
-sudo mkfs.ext4 $DEV
+echo "Formatting $dev as ext4"
+sudo mkfs.ext4 $dev
 
-echo "Mounting $DEV"
-sudo mount $DEV /media/card
+echo "Mounting $dev"
+sudo mount "$dev" "$mnt"
 
-echo "Extracting ${IMAGE}-image-${MACHINE}.tar.xz to /media/card"
-sudo tar -C /media/card -xJf ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz
+echo "Extracting ${IMAGE}-image-${MACHINE}.tar.xz to $mnt"
+sudo tar -C "$mnt" -xJf ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz
 
 echo "Generating a random-seed for urandom"
-mkdir -p /media/card/var/lib/urandom
-sudo dd if=/dev/urandom of=/media/card/var/lib/urandom/random-seed bs=512 count=1
-sudo chmod 600 /media/card/var/lib/urandom/random-seed
+mkdir -p "${mnt}/var/lib/systemd"
+sudo dd status=none if=/dev/urandom of="${mnt}/var/lib/systemd/random-seed" bs=512 count=1
+sudo chmod 600 "${mnt}/var/lib/systemd/random-seed"
 
-echo "Writing hostname to /etc/hostname"
+echo "Writing $TARGET_HOSTNAME to ${mnt}/etc/hostname"
 export TARGET_HOSTNAME
-sudo -E bash -c 'echo ${TARGET_HOSTNAME} > /media/card/etc/hostname'        
+sudo -E bash -c 'echo ${TARGET_HOSTNAME} > ${mnt}/etc/hostname'
 
-if [ -f ./interfaces ]; then
-    echo "Writing ./interfaces to /media/card/etc/network/"
-    sudo cp ./interfaces /media/card/etc/network/interfaces
-fi
 
-if [ -f ./wpa_supplicant.conf ]; then
-    echo "Writing ./wpa_supplicant.conf to /media/card/etc/"
-    sudo cp ./wpa_supplicant.conf /media/card/etc/wpa_supplicant.conf
-fi
-
-echo "Unmounting $DEV"
-sudo umount $DEV
-
-if [ -b "/dev/${1}3" ]; then
-    DEV=/dev/${1}3
-    echo "Formatting flags partition as FAT: ${DEV}"
-    sudo mkfs.vfat ${DEV}
-fi
-
-if [ -b "/dev/${1}4" ]; then
-    DEV=/dev/${1}4
-    echo "Formatting opt partition as ext4: ${DEV}"
-    sudo mkfs.ext4 -q -F ${DEV}
-fi
+echo "Unmounting $dev"
+sudo umount $dev
 
 echo "Done"
 
