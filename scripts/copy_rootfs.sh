@@ -85,6 +85,7 @@ sudo dd status=none if=/dev/urandom of="${mnt}/var/lib/systemd/random-seed" bs=5
 sudo chmod 600 "${mnt}/var/lib/systemd/random-seed"
 
 echo "Writing $TARGET_HOSTNAME to ${mnt}/etc/hostname"
+export mnt
 export TARGET_HOSTNAME
 sudo -E bash -c 'echo ${TARGET_HOSTNAME} > ${mnt}/etc/hostname'
 
