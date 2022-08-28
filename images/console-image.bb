@@ -13,12 +13,17 @@ CORE_OS = " \
 "
 
 EXTRA_TOOLS = " \
+    binutils binutils-symlinks \
     bzip2 \
     chrony \
+    coreutils \
     curl \
+    diffutils \
+    elfutils elfutils-binutils \
     dosfstools \
     e2fsprogs-mke2fs \
     ethtool \
+    file \
     findutils \
     grep \
     i2c-tools \
@@ -28,9 +33,11 @@ EXTRA_TOOLS = " \
     iptables \
     less \
     lsof \
+    ltrace \
     netcat-openbsd \
     parted \
     procps \
+    strace \
     sysfsutils \
     tcpdump \
     util-linux \
