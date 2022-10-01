@@ -3,6 +3,7 @@ SUMMARY = "A console development image"
 require console-image.bb
 
 DEV_SDK = " \
+    cmake \
     cpp \
     cpp-symlinks \
     gcc \
