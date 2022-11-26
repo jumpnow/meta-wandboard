@@ -9,6 +9,8 @@ COMPATIBLE_MACHINE = "wandboard"
 KERNEL_DEVICETREE ?= " \
     imx6dl-wandboard-revb1.dtb \
     imx6q-wandboard-revb1.dtb \
+    imx6dl-wandboard-revd1.dtb \
+    imx6q-wandboard-revd1.dtb \
 "
 
 LINUX_VERSION = "6.0"
