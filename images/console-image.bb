@@ -54,16 +54,10 @@ SECURITY_TOOLS = " \
     wireguard-tools \
 "
 
-SYSTEMD_STUFF = " \
-    systemd-analyze \
-    systemd-bash-completion \
-"
-
 IMAGE_INSTALL += " \
     ${CORE_OS} \
     ${EXTRA_TOOLS} \
     ${SECURITY_TOOLS} \
-    ${SYSTEMD_STUFF} \
 "
 
 set_local_timezone() {

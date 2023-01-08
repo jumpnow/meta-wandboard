@@ -1,18 +1,18 @@
-From ba43ad5916a77d79aa3de7c4385a52e8b0de925b Mon Sep 17 00:00:00 2001
+From 25ef54a501dc904aa03e33e59a0e28be6052c07a Mon Sep 17 00:00:00 2001
 From: Scott Ellis <scott@jumpnowtek.com>
-Date: Sat, 27 Aug 2022 15:59:37 -0400
+Date: Wed, 4 Jan 2023 07:47:10 -0500
 Subject: [PATCH] Boot a wandboard revb1 board
 
 ---
- configs/wandboard_defconfig | 25 +++++++++--------
- include/configs/wandboard.h | 53 +++++++------------------------------
- 2 files changed, 22 insertions(+), 56 deletions(-)
+ configs/wandboard_defconfig | 24 ++++++++---------
+ include/configs/wandboard.h | 52 +++++--------------------------------
+ 2 files changed, 19 insertions(+), 57 deletions(-)
 
 diff --git a/configs/wandboard_defconfig b/configs/wandboard_defconfig
-index 4015c39143..3bf79b2935 100644
+index 569b5873ff..06c7fe2d98 100644
 --- a/configs/wandboard_defconfig
 +++ b/configs/wandboard_defconfig
-@@ -14,20 +14,19 @@ CONFIG_SYS_I2C_MXC_I2C1=y
+@@ -14,7 +14,7 @@ CONFIG_SYS_I2C_MXC_I2C1=y
  CONFIG_SYS_I2C_MXC_I2C2=y
  CONFIG_SYS_I2C_MXC_I2C3=y
  CONFIG_DM_GPIO=y
@@ -21,12 +21,7 @@ index 4015c39143..3bf79b2935 100644
  CONFIG_SPL_TEXT_BASE=0x00908000
  CONFIG_SPL_MMC=y
  CONFIG_SPL_SERIAL=y
- CONFIG_SPL=y
- CONFIG_SPL_LIBDISK_SUPPORT=y
--CONFIG_CMD_HDMIDETECT=y
- CONFIG_AHCI=y
- CONFIG_DISTRO_DEFAULTS=y
- CONFIG_FIT=y
+@@ -27,7 +27,7 @@ CONFIG_FIT=y
  CONFIG_SPL_FIT_PRINT=y
  CONFIG_SPL_LOAD_FIT=y
  # CONFIG_USE_SPL_FIT_GENERATOR is not set
@@ -35,7 +30,7 @@ index 4015c39143..3bf79b2935 100644
  # CONFIG_CONSOLE_MUX is not set
  CONFIG_SYS_CONSOLE_IS_IN_ENV=y
  CONFIG_SYS_CONSOLE_OVERWRITE_ROUTINE=y
-@@ -41,7 +40,7 @@ CONFIG_SPL_WATCHDOG=y
+@@ -40,7 +40,7 @@ CONFIG_SPL_WATCHDOG=y
  CONFIG_CMD_GPIO=y
  CONFIG_CMD_I2C=y
  CONFIG_CMD_MMC=y
@@ -44,12 +39,12 @@ index 4015c39143..3bf79b2935 100644
  CONFIG_CMD_USB=y
  CONFIG_CMD_BMP=y
  CONFIG_CMD_CACHE=y
-@@ -55,13 +54,13 @@ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+@@ -54,13 +54,13 @@ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
  CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
  CONFIG_DM=y
  CONFIG_BOUNCE_BUFFER=y
 -CONFIG_DWC_AHSATA=y
-+#CONFIG_DWC_AHSATA=y
++# CONFIG_DWC_AHSATA=y
  CONFIG_DM_I2C=y
  CONFIG_SPL_SYS_I2C_LEGACY=y
  CONFIG_SYS_I2C_MXC=y
@@ -60,31 +55,31 @@ index 4015c39143..3bf79b2935 100644
  CONFIG_DM_ETH=y
  CONFIG_FEC_MXC=y
  CONFIG_MII=y
-@@ -73,12 +72,12 @@ CONFIG_DM_SCSI=y
+@@ -72,12 +72,12 @@ CONFIG_DM_SCSI=y
  CONFIG_MXC_UART=y
  CONFIG_DM_THERMAL=y
  CONFIG_USB=y
 -CONFIG_DM_VIDEO=y
+-CONFIG_VIDEO_LOGO=y
 +# CONFIG_DM_VIDEO=y
++# CONFIG_VIDEO_LOGO=y
  # CONFIG_VIDEO_BPP8 is not set
  # CONFIG_VIDEO_BPP32 is not set
 -CONFIG_SYS_WHITE_ON_BLACK=y
 -CONFIG_VIDEO_IPUV3=y
 -CONFIG_SPLASH_SCREEN=y
 -CONFIG_SPLASH_SCREEN_ALIGN=y
--CONFIG_VIDEO_BMP_RLE8=y
 -CONFIG_BMP_16BPP=y
-+#CONFIG_SYS_WHITE_ON_BLACK=y
-+#CONFIG_VIDEO_IPUV3=y
-+#CONFIG_SPLASH_SCREEN=y
-+#CONFIG_SPLASH_SCREEN_ALIGN=y
-+#CONFIG_VIDEO_BMP_RLE8=y
-+#CONFIG_BMP_16BPP=y
++# CONFIG_SYS_WHITE_ON_BLACK=y
++# CONFIG_VIDEO_IPUV3=y
++# CONFIG_SPLASH_SCREEN=y
++# CONFIG_SPLASH_SCREEN_ALIGN=y
++# CONFIG_BMP_16BPP=y
 diff --git a/include/configs/wandboard.h b/include/configs/wandboard.h
-index ece762e512..4ddf8adf3e 100644
+index d44b4a0750..044340ba79 100644
 --- a/include/configs/wandboard.h
 +++ b/include/configs/wandboard.h
-@@ -27,42 +27,17 @@
+@@ -26,40 +26,16 @@
  #define CONFIG_SYS_FSL_USDHC_NUM	2
  #define CONFIG_SYS_FSL_ESDHC_ADDR	0
  
@@ -93,11 +88,9 @@ index ece762e512..4ddf8adf3e 100644
 -#define CONFIG_MXC_USB_FLAGS		0
 -
 -/* Framebuffer */
--#define CONFIG_VIDEO_LOGO
--#define CONFIG_VIDEO_BMP_LOGO
 -#define CONFIG_IMX_HDMI
 -#define CONFIG_IMX_VIDEO_SKIP
- 
+-
  #define CONFIG_EXTRA_ENV_SETTINGS \
 -	"console=ttymxc0\0" \
 -	"splashpos=m,m\0" \
@@ -130,7 +123,7 @@ index ece762e512..4ddf8adf3e 100644
  	"findfdt="\
  		"if test $board_name = D1 && test $board_rev = MX6QP ; then " \
  			"setenv fdtfile imx6qp-wandboard-revd1.dtb; fi; " \
-@@ -80,25 +55,17 @@
+@@ -77,24 +53,10 @@
  			"setenv fdtfile imx6dl-wandboard-revb1.dtb; fi; " \
  		"if test $fdtfile = undefined; then " \
  			"echo WARNING: Could not determine dtb to use; fi; \0" \
@@ -141,12 +134,7 @@ index ece762e512..4ddf8adf3e 100644
 -	"scriptaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
 -	BOOTENV
 -
-+	"loadfdt=load mmc ${mmcdev}:1 ${fdt_addr} /boot/${fdtfile}\0" \
-+        "loadkernel=load mmc ${mmcdev}:1 ${loadaddr} /boot/zImage\0" \
-+	"bootargs=console=ttymxc0,115200 root=/dev/mmcblk2p1 ro rootfstype=ext4 rootwait\0" \
-+        "bootcmd=mmc dev ${mmcdev}; run findfdt; run loadfdt; run loadkernel; bootz ${loadaddr} - ${fdt_addr}\0"
-+/*
- #define BOOT_TARGET_DEVICES(func) \
+-#define BOOT_TARGET_DEVICES(func) \
 -	func(MMC, mmc, 0) \
 -	func(MMC, mmc, 1) \
 -	func(MMC, mmc, 2) \
@@ -154,15 +142,16 @@ index ece762e512..4ddf8adf3e 100644
 -	func(USB, usb, 0) \
 -	func(PXE, pxe, na) \
 -	func(DHCP, dhcp, na)
-+	func(MMC, mmc, 0)
- 
- #include <config_distro_bootcmd.h>
- #include <linux/stringify.h>
 -
-+*/
+-#include <config_distro_bootcmd.h>
+-#include <linux/stringify.h>
++	"loadfdt=load mmc ${mmcdev}:1 ${fdt_addr} /boot/${fdtfile}\0" \
++	"loadkernel=load mmc ${mmcdev}:1 ${loadaddr} /boot/zImage\0" \
++	"bootargs=console=ttymxc0,115200 root=/dev/mmcblk2p1 ro rootfstype=ext4 rootwait\0" \
++	"bootcmd=mmc dev ${mmcdev}; run findfdt; run loadfdt; run loadkernel; bootz ${loadaddr} - ${fdt_addr}\0"
+ 
  /* Physical Memory Map */
  #define PHYS_SDRAM			MMDC0_ARB_BASE_ADDR
- 
 -- 
 2.25.1
 
