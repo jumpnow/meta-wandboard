@@ -1,5 +1,5 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 4.1 Poky distribution [langdale] branch
+# Yocto Project 4.2 Poky distribution [mickledore] branch
 
 LICENSE_FLAGS_ACCEPTED = "commercial"
 
@@ -13,7 +13,7 @@ INIT_MANAGER = "systemd"
 
 MACHINE = "wandboard"
 
-#DL_DIR = "/src/langdale"
+#DL_DIR = "/src/mickledore"
 #SSTATE_DIR = "/oe2/wand/sstate-cache"
 #TMPDIR = "/oe2/wand/tmp"
 
