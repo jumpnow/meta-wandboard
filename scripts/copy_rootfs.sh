@@ -54,8 +54,8 @@ fi
 
 echo -e "HOSTNAME: $TARGET_HOSTNAME\n"
 
-if [ ! -f "${SRC}/${IMAGE}-image-${MACHINE}.tar.xz" ]; then
-    echo -e "File not found: ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz\n"
+if [ ! -f "${SRC}/${IMAGE}-image-${MACHINE}.rootfs.tar.xz" ]; then
+    echo -e "File not found: ${SRC}/${IMAGE}-image-${MACHINE}.rootfs.tar.xz\n"
     exit 1
 fi
 
@@ -76,8 +76,8 @@ sudo mkfs.ext4 $dev
 echo "Mounting $dev"
 sudo mount "$dev" "$mnt"
 
-echo "Extracting ${IMAGE}-image-${MACHINE}.tar.xz to $mnt"
-sudo tar -C "$mnt" -xJf ${SRC}/${IMAGE}-image-${MACHINE}.tar.xz
+echo "Extracting ${IMAGE}-image-${MACHINE}.rootfs.tar.xz to $mnt"
+sudo tar -C "$mnt" -xJf ${SRC}/${IMAGE}-image-${MACHINE}.rootfs.tar.xz
 
 echo "Generating a random-seed for urandom"
 mkdir -p "${mnt}/var/lib/systemd"

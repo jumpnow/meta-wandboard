@@ -1,41 +1,41 @@
-From 6204565852e4b4e7cbba08a96566b83c7192eaaf Mon Sep 17 00:00:00 2001
+From b821a7cadbeaf293c50d6c4715c6861e1aa57ee5 Mon Sep 17 00:00:00 2001
 From: Scott Ellis <scott-ellis@idexx.com>
-Date: Sun, 29 Oct 2023 14:25:22 -0400
-Subject: [PATCH] Boot-a-wandboard-revb1-board
+Date: Sat, 4 Nov 2023 22:28:41 -0400
+Subject: [PATCH] Boot a wandboard revb1 board
+
+Upstream-Status: Inappropriate [other]
 
 ---
- configs/wandboard_defconfig | 22 +++++++++----------
- include/configs/wandboard.h | 44 ++++++-------------------------------
- 2 files changed, 18 insertions(+), 48 deletions(-)
+ configs/wandboard_defconfig | 15 +------------
+ include/configs/wandboard.h | 45 ++++++-------------------------------
+ 2 files changed, 8 insertions(+), 52 deletions(-)
 
 diff --git a/configs/wandboard_defconfig b/configs/wandboard_defconfig
-index 525f55ee00..0bbd76f5a5 100644
+index 0493ef2f67..96f7760c3c 100644
 --- a/configs/wandboard_defconfig
 +++ b/configs/wandboard_defconfig
-@@ -28,7 +28,7 @@ CONFIG_FIT=y
+@@ -27,7 +27,7 @@ CONFIG_FIT=y
  CONFIG_SPL_FIT_PRINT=y
  CONFIG_SPL_LOAD_FIT=y
- # CONFIG_USE_SPL_FIT_GENERATOR is not set
+ CONFIG_DISTRO_DEFAULTS=y
 -CONFIG_BOOTCOMMAND="run findfdt; run finduuid; run distro_bootcmd"
 +# CONFIG_BOOTCOMMAND="run findfdt; run finduuid; run distro_bootcmd"
  # CONFIG_CONSOLE_MUX is not set
  CONFIG_SYS_CONSOLE_IS_IN_ENV=y
  CONFIG_SYS_CONSOLE_OVERWRITE_ROUTINE=y
-@@ -45,7 +45,7 @@ CONFIG_SYS_PBSIZE=532
+@@ -44,7 +44,6 @@ CONFIG_SYS_PBSIZE=532
  CONFIG_CMD_GPIO=y
  CONFIG_CMD_I2C=y
  CONFIG_CMD_MMC=y
 -CONFIG_CMD_SATA=y
-+# CONFIG_CMD_SATA=y
  CONFIG_CMD_USB=y
  CONFIG_CMD_BMP=y
  CONFIG_CMD_CACHE=y
-@@ -58,14 +58,14 @@ CONFIG_ENV_IS_IN_MMC=y
+@@ -57,14 +56,12 @@ CONFIG_ENV_IS_IN_MMC=y
  CONFIG_SYS_RELOC_GD_ENV_ADDR=y
  CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
  CONFIG_BOUNCE_BUFFER=y
 -CONFIG_DWC_AHSATA=y
-+# CONFIG_DWC_AHSATA=y
  CONFIG_LBA48=y
  CONFIG_DM_I2C=y
  CONFIG_SPL_SYS_I2C_LEGACY=y
@@ -43,38 +43,32 @@ index 525f55ee00..0bbd76f5a5 100644
  CONFIG_FSL_USDHC=y
  CONFIG_PHYLIB=y
 -CONFIG_PHY_ATHEROS=y
-+# CONFIG_PHY_ATHEROS=y
  CONFIG_FEC_MXC=y
  CONFIG_MII=y
  CONFIG_PINCTRL=y
-@@ -77,12 +77,12 @@ CONFIG_DM_SERIAL=y
+@@ -76,14 +73,4 @@ CONFIG_DM_SERIAL=y
  CONFIG_MXC_UART=y
  CONFIG_DM_THERMAL=y
  CONFIG_USB=y
 -CONFIG_VIDEO=y
 -CONFIG_VIDEO_LOGO=y
-+#CONFIG_VIDEO=y
-+#CONFIG_VIDEO_LOGO=y
- # CONFIG_VIDEO_BPP8 is not set
- # CONFIG_VIDEO_BPP32 is not set
+-# CONFIG_VIDEO_BPP8 is not set
+-# CONFIG_VIDEO_BPP32 is not set
 -CONFIG_SYS_WHITE_ON_BLACK=y
 -CONFIG_VIDEO_IPUV3=y
+ CONFIG_IMX_VIDEO_SKIP=y
+-CONFIG_IMX_HDMI=y
 -CONFIG_SPLASH_SCREEN=y
 -CONFIG_SPLASH_SCREEN_ALIGN=y
 -CONFIG_BMP_16BPP=y
-+#CONFIG_SYS_WHITE_ON_BLACK=y
-+#CONFIG_VIDEO_IPUV3=y
-+#CONFIG_SPLASH_SCREEN=y
-+#CONFIG_SPLASH_SCREEN_ALIGN=y
-+#CONFIG_BMP_16BPP=y
 diff --git a/include/configs/wandboard.h b/include/configs/wandboard.h
-index 91c1f4b3b5..e88b18d448 100644
+index 7b8c5cbe7a..d9f59be456 100644
 --- a/include/configs/wandboard.h
 +++ b/include/configs/wandboard.h
-@@ -27,31 +27,15 @@
- #define CONFIG_IMX_VIDEO_SKIP
+@@ -21,31 +21,12 @@
+ #define CFG_MXC_USB_FLAGS		0
  
- #define CONFIG_EXTRA_ENV_SETTINGS \
+ #define CFG_EXTRA_ENV_SETTINGS \
 -	"console=ttymxc0\0" \
 -	"splashpos=m,m\0" \
 -	"splashimage=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
@@ -84,7 +78,7 @@ index 91c1f4b3b5..e88b18d448 100644
  	"initrd_high=0xffffffff\0" \
  	"fdt_addr_r=0x18000000\0" \
  	"fdt_addr=0x18000000\0" \
- 	"ip_dyn=yes\0" \
+-	"ip_dyn=yes\0" \
 -	"mmcdev=" __stringify(CONFIG_SYS_MMC_ENV_DEV) "\0" \
 -	"finduuid=part uuid mmc 0:1 uuid\0" \
 -	"update_sd_firmware_filename=u-boot.imx\0" \
@@ -101,12 +95,10 @@ index 91c1f4b3b5..e88b18d448 100644
 -				"mmc write ${loadaddr} 0x2 ${fw_sz}; " \
 -			"fi; "	\
 -		"fi\0" \
-+	"loadaddr=0x12000000\0" \
-+	"mmcdev=0\0" \
  	"findfdt="\
  		"if test $board_name = D1 && test $board_rev = MX6QP ; then " \
  			"setenv fdtfile imx6qp-wandboard-revd1.dtb; fi; " \
-@@ -69,24 +53,10 @@
+@@ -63,24 +44,12 @@
  			"setenv fdtfile imx6dl-wandboard-revb1.dtb; fi; " \
  		"if test $fdtfile = undefined; then " \
  			"echo WARNING: Could not determine dtb to use; fi; \0" \
@@ -128,6 +120,8 @@ index 91c1f4b3b5..e88b18d448 100644
 -
 -#include <config_distro_bootcmd.h>
 -#include <linux/stringify.h>
++	"loadaddr=0x12000000\0" \
++	"mmcdev=0\0" \
 +	"loadfdt=load mmc ${mmcdev}:1 ${fdt_addr} /boot/${fdtfile}\0" \
 +	"loadkernel=load mmc ${mmcdev}:1 ${loadaddr} /boot/zImage\0" \
 +	"bootargs=console=ttymxc0,115200 root=/dev/mmcblk2p1 ro rootfstype=ext4 rootwait\0" \

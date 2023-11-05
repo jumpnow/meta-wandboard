@@ -45,13 +45,12 @@ EXTRA_TOOLS = " \
     unzip \
     vim \
     wget \
+    wireguard-tools \
     zip \
 "
 
 SECURITY_TOOLS = " \
     checksec \
-    nmap \
-    wireguard-tools \
 "
 
 IMAGE_INSTALL += " \

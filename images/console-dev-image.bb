@@ -4,12 +4,9 @@ require console-image.bb
 
 DEV_SDK = " \
     cmake \
-    cpp \
-    cpp-symlinks \
-    gcc \
-    gcc-symlinks \
-    g++ \
-    g++-symlinks \
+    cpp cpp-symlinks \
+    gcc gcc-symlinks \
+    g++ g++-symlinks \
     gettext \
     git \
     ldd \
