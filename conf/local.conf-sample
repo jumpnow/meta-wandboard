@@ -1,9 +1,9 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 4.3 Poky distribution [nanbield] branch
+# Yocto Project 5.0 Poky distribution [scarthgap] branch
 
 LICENSE_FLAGS_ACCEPTED = "commercial"
 
-DISTRO_FEATURES = "ext2 security systemd usbhost ${DISTRO_FEATURES_LIBC}"
+DISTRO_FEATURES = "ext2 systemd usbhost ${DISTRO_FEATURES_LIBC}"
 
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "pulseaudio sysvinit"
 
@@ -13,7 +13,7 @@ INIT_MANAGER = "systemd"
 
 MACHINE = "wandboard"
 
-#DL_DIR = "/src/nanbield"
+#DL_DIR = "/src/scarthgap"
 #SSTATE_DIR = "/oe2/wand/sstate-cache"
 #TMPDIR = "/oe2/wand/tmp"
 

@@ -1,17 +1,16 @@
-From b821a7cadbeaf293c50d6c4715c6861e1aa57ee5 Mon Sep 17 00:00:00 2001
+From fa25571fe76d800b784d074b3ac3d1cd4bd32962 Mon Sep 17 00:00:00 2001
 From: Scott Ellis <scott-ellis@idexx.com>
 Date: Sat, 4 Nov 2023 22:28:41 -0400
 Subject: [PATCH] Boot a wandboard revb1 board
 
 Upstream-Status: Inappropriate [other]
-
 ---
  configs/wandboard_defconfig | 15 +------------
  include/configs/wandboard.h | 45 ++++++-------------------------------
  2 files changed, 8 insertions(+), 52 deletions(-)
 
 diff --git a/configs/wandboard_defconfig b/configs/wandboard_defconfig
-index 0493ef2f67..96f7760c3c 100644
+index 7c1727f8b12..8d60f2875a1 100644
 --- a/configs/wandboard_defconfig
 +++ b/configs/wandboard_defconfig
 @@ -27,7 +27,7 @@ CONFIG_FIT=y
@@ -62,7 +61,7 @@ index 0493ef2f67..96f7760c3c 100644
 -CONFIG_SPLASH_SCREEN_ALIGN=y
 -CONFIG_BMP_16BPP=y
 diff --git a/include/configs/wandboard.h b/include/configs/wandboard.h
-index 7b8c5cbe7a..d9f59be456 100644
+index 7b8c5cbe7a8..d9f59be4565 100644
 --- a/include/configs/wandboard.h
 +++ b/include/configs/wandboard.h
 @@ -21,31 +21,12 @@
