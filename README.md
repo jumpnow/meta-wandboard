@@ -1,10 +1,10 @@
 This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
-    branch: scarthgap
+    branch: styhead
 
     URI: git://git.openembedded.org/meta-openembedded
-    branch: scarthgap
+    branch: styhead
 
 Latest commits:
 

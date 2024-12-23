@@ -5,8 +5,10 @@ SRC_URI = " \
    file://LICENCE.broadcom_bcm43xx \
 "
 
-S = "${WORKDIR}"
+S = "${UNPACKDIR}"
+
 BRCM_FWDIR = "/lib/firmware/brcm"
+
 CHIP_MODEL ?= "Invalid"
 
 do_install() {
