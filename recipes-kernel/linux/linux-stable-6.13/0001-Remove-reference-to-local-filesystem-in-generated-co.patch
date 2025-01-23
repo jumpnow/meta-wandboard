@@ -1,0 +1,29 @@
+From 311475369f6f8867a5e9d12816e8e2a6f34a64b6 Mon Sep 17 00:00:00 2001
+From: Scott Ellis <scott-ellis@idexx.com>
+Date: Sun, 22 Dec 2024 10:48:00 -0500
+Subject: [PATCH] Remove reference to local filesystem in generated code
+
+Upstream-Status: Pending
+
+Signed-off-by: Scott Ellis <7b2da198@proton.me>
+---
+ arch/arm/tools/gen-mach-types | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/arch/arm/tools/gen-mach-types b/arch/arm/tools/gen-mach-types
+index cbe1c33bb871..fdc4805b9d98 100644
+--- a/arch/arm/tools/gen-mach-types
++++ b/arch/arm/tools/gen-mach-types
+@@ -24,8 +24,7 @@ NF == 3 {
+ 
+ END	{
+ 	  printf("/*\n");
+-	  printf(" * This was automagically generated from %s!\n", FILENAME);
+-	  printf(" * Do NOT edit\n");
++	  printf(" * Generated file - do not edit\n");
+ 	  printf(" */\n\n");
+ 	  printf("#ifndef __ASM_ARM_MACH_TYPE_H\n");
+ 	  printf("#define __ASM_ARM_MACH_TYPE_H\n\n");
+-- 
+2.34.1
+
