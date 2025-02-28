@@ -9,4 +9,4 @@ This layer depends on:
 Latest commits:
 
     poky 11a8dec6e2
-    meta-openembedded 6851cbf026
+    meta-openembedded c93994f1bb
