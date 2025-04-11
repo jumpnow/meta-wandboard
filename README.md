@@ -1,12 +1,12 @@
 This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
-    branch: styhead
+    branch: walnascar
 
     URI: git://git.openembedded.org/meta-openembedded
-    branch: styhead
+    branch: walnascar
 
 Latest commits:
 
-    poky 70dc28ac28
-    meta-openembedded c93994f1bb
+    poky 39cbc37918
+    meta-openembedded 2fb85f67dd

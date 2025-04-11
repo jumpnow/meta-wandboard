@@ -1,5 +1,5 @@
 # Local configuration for meta-wandboard images
-# Yocto Project 5.1 Poky distribution [styhead] branch
+# Yocto Project 5.2 Poky distribution [walnascar] branch
 
 LICENSE_FLAGS_ACCEPTED = "commercial"
 
@@ -13,7 +13,7 @@ INIT_MANAGER = "systemd"
 
 MACHINE = "wandboard"
 
-#DL_DIR = "/src/styhead"
+#DL_DIR = "/src/walnascar"
 #SSTATE_DIR = "/oe2/wand/sstate-cache"
 #TMPDIR = "/oe2/wand/tmp"
 
@@ -22,8 +22,7 @@ PACKAGE_CLASSES = "package_ipk"
 
 SDKMACHINE = "x86_64"
 
-# no root password
-EXTRA_IMAGE_FEATURES = "debug-tweaks"
+EXTRA_IMAGE_FEATURES = "empty-root-password allow-empty-password allow-root-login"
 
 PATCHRESOLVE = "noop"
 RM_OLD_IMAGE = "1"
